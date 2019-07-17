@@ -11,7 +11,7 @@
         <i class="icon-item item-1"></i>
         <div class="item-text">罪犯档案</div>
       </div>
-      <div class="item">
+      <div class="item" @click="$router.push('/videopatrol')">
         <i class="icon-item item-1"></i>
         <div class="item-text">视频巡查</div>
       </div>

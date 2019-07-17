@@ -6,6 +6,7 @@ import * as area from './data/area'
 import * as cause from './data/cause'
 import * as FlowNode from './data/flow_node'
 import * as flow from './data/flow'
+import  videoPatrol from './data/videopatrol'
 
 /**
  * 创建临时数据
@@ -39,6 +40,7 @@ if (Vue.$ces.Config.service === 'static') {
 
   var migrantsList = (params, loading) => setPromise(migrants.list, loading);
   var migrantsGetById = (params) => setPromise(migrants.getById);
+  var videoPatrolList=(params,loading)=>setPromise(videoPatrol,loading)
 } else {
   var getFlowNode = (params) => Api.post('dztz/api/flow!getFlowNode.action', params);
 
@@ -52,6 +54,8 @@ if (Vue.$ces.Config.service === 'static') {
 
   var migrantsList = (params, loading) => Api.post('dztz/api/flow!list.action', params, loading);
   var migrantsGetById = (params) => Api.post('dztz/api/flow!getById.action', params);
+
+
 }
 
 export {
@@ -63,5 +67,6 @@ export {
   flowNext,
   finishProcess,
   destroyProcess,
-  migrantsGetById
+  migrantsGetById,
+  videoPatrolList
 }

@@ -39,6 +39,7 @@ const Workbench = r => require.ensure([], () => r(require('@/views/workbench/wor
 const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
 const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
 const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
+const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
 
 
 var routes = [
@@ -78,6 +79,14 @@ var routes = [
       value:1
     }
   },
+  {
+    path:'/videopatrol',
+    name:'Videopatrol',
+    component:Videopatrol,
+    meta:{
+      value:2
+    }
+  }
   /*{
     path: '/migrants',
     redirect: 'migrants_mine_page',
