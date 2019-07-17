@@ -9,6 +9,7 @@ import * as flow from './data/flow'
 
 /*广西demo*/
 import * as workbench from './data/workbenchList'
+import * as record from './data/criminalRecord'
 
 
 /**
@@ -48,6 +49,7 @@ if (Vue.$ces.Config.service === 'static') {
   /*广西demo*/
 
   var workbenchList = (params, loading) => setPromise(workbench.tasksList, loading);
+  var criminalRecord = (params, loading) => setPromise(record.list, loading);
 } else {
   var getFlowNode = (params) => Api.post('dztz/api/flow!getFlowNode.action', params);
 
@@ -75,5 +77,6 @@ export {
   destroyProcess,
   migrantsGetById,
 
-  workbenchList
+  workbenchList,
+  criminalRecord
 }

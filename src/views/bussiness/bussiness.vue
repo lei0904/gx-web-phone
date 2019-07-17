@@ -6,11 +6,12 @@
     </router-link>
   </mt-header>
   <div class="content" :style="{height:contentH+'px'}">
+
     <div class="sudoku">
-      <div class="item">
+      <router-link :to="'/criminalRecord'" class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">罪犯档案</div>
-      </div>
+      </router-link>
       <div class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">视频巡查</div>

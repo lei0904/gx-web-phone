@@ -7,12 +7,10 @@
       </mt-header>
     </div>
     <div class="content">
-      <div class="task-content">
         <div class="scroller-wrapper">
           <scroller :on-refresh="refresh"
                     :on-infinite="infinite"
                     ref="scroller">
-
             <div class="task-title">
               <div class="line left-line"></div>
               <div class="title">我的待办</div>
@@ -46,7 +44,7 @@
                   <div class="info"><label class="info-lable">谈话时间：</label><span>{{item.time}}</span></div>
                 </div>
                 <div v-if="item.type == 4">
-                  <div class="info  info-title"><label class="info-lable">服药：</label><label>{{item.name}}</label></div>
+                  <div class="info  info-title"><label>{{item.name}}</label></div>
                   <div class="info"><label class="info-lable">提交时间：</label><span>{{item.time}}</span></div>
                 </div>
 
@@ -56,7 +54,6 @@
             </div>
           </scroller>
         </div>
-      </div>
     </div>
     <v-menu :checked="1"></v-menu>
   </div>
@@ -74,16 +71,12 @@
     },
     data() {
       return {
-        flowtype: '0',
-        category: '0',
-
         page: 0,
         rows: 5,
         list: [],
         tasksList:[],
         remindList:[],
         searchText:'',
-
         scrollerPosition: null
       }
     },

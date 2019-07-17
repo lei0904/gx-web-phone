@@ -39,6 +39,7 @@ const Workbench = r => require.ensure([], () => r(require('@/views/workbench/wor
 const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
 const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
 const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
+const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
 
 
 var routes = [
@@ -76,6 +77,22 @@ var routes = [
     component: Personal,
     meta:{
       value:1
+    }
+  },
+  {
+    path: '/personal',
+    name: 'Personal',
+    component: Personal,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/criminalRecord',
+    name: 'criminalRecord',
+    component: CriminalRecord,
+    meta:{
+      value:2
     }
   },
   /*{
