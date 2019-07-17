@@ -81,8 +81,6 @@ export {
   destroyProcess,
   migrantsGetById,
   videoPatrolList,
-  migrantsGetById,
-
   workbenchList,
   criminalRecord
 }
