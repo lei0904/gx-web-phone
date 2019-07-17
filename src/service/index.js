@@ -8,6 +8,11 @@ import * as FlowNode from './data/flow_node'
 import * as flow from './data/flow'
 import  videoPatrol from './data/videopatrol'
 
+/*广西demo*/
+import * as workbench from './data/workbenchList'
+import * as record from './data/criminalRecord'
+
+
 /**
  * 创建临时数据
  */
@@ -40,6 +45,12 @@ if (Vue.$ces.Config.service === 'static') {
 
   var migrantsList = (params, loading) => setPromise(migrants.list, loading);
   var migrantsGetById = (params) => setPromise(migrants.getById);
+
+
+  /*广西demo*/
+
+  var workbenchList = (params, loading) => setPromise(workbench.tasksList, loading);
+  var criminalRecord = (params, loading) => setPromise(record.list, loading);
   var videoPatrolList=(params,loading)=>setPromise(videoPatrol,loading)
 } else {
   var getFlowNode = (params) => Api.post('dztz/api/flow!getFlowNode.action', params);
@@ -56,6 +67,7 @@ if (Vue.$ces.Config.service === 'static') {
   var migrantsGetById = (params) => Api.post('dztz/api/flow!getById.action', params);
 
 
+
 }
 
 export {
@@ -68,5 +80,9 @@ export {
   finishProcess,
   destroyProcess,
   migrantsGetById,
-  videoPatrolList
+  videoPatrolList,
+  migrantsGetById,
+
+  workbenchList,
+  criminalRecord
 }

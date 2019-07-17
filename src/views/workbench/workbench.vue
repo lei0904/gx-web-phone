@@ -7,20 +7,53 @@
       </mt-header>
     </div>
     <div class="content">
-      <div class="scroller-wrapper">
-        <scroller :on-refresh="refresh"
-                  :on-infinite="infinite"
-                  ref="scroller">
-          <div v-for="(item, index) in list" @click="onItemClick(index, item)"
-               class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-            <div class="title">{{index + 1}}. {{item.FQBM}}</div>
-            <div class="info">外来人员：<span>{{item.outsiders | showOutsiders}}</span></div>
-            <div class="info">进监时间：<span>{{item.JJSJ}}</span></div>
-            <div class="info">进监事由：<span>{{item.JJSY}} - {{item.JJSYXL}}</span></div>
-            <div class="process">当前进度：<span>{{item.current | showCurrent}}</span></div>
-          </div>
-        </scroller>
-      </div>
+        <div class="scroller-wrapper">
+          <scroller :on-refresh="refresh"
+                    :on-infinite="infinite"
+                    ref="scroller">
+            <div class="task-title">
+              <div class="line left-line"></div>
+              <div class="title">我的待办</div>
+              <div class="line right-line"></div>
+            </div>
+            <div v-for="(item, index) in list">
+              <div v-if="item.type == 1 || item.type == 2" class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
+                <div v-if="item.type == 1">
+                  <div class="info info-title"><label class="info-lable">点名：</label><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">点名时间：</label><span>{{item.time}}</span></div>
+                  <div class="info"><label class="info-lable">预计点名人数：</label><span>{{item.num}} </span></div>
+                </div>
+                <div v-if="item.type == 2">
+                  <div class="info  info-title"><label class="info-lable">值班：</label><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">值班时间：</label><span>{{item.time}}</span></div>
+                </div>
+                <div class="start-btn" @click="onItemClick(index, item)">开始</div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="task-title">
+              <div class="line left-line"></div>
+              <div class="title">业务提醒</div>
+              <div class="line right-line"></div>
+            </div>
+            <div v-for="(item, index) in list">
+              <div  v-if="item.type == 3 || item.type == 4"
+                    class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
+                <div class="info info-title"><label class="info-lable">{{item.remindName}}：</label><label>{{item.criminalName}}</label></div>
+                <div v-if="item.type == 3">
+                  <div class="info"><label class="info-lable">谈话时间：</label><span>{{item.time}}</span></div>
+                </div>
+                <div v-if="item.type == 4">
+                  <div class="info  info-title"><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">提交时间：</label><span>{{item.time}}</span></div>
+                </div>
+
+                <div class="start-btn" @click="onItemClick(index, item)">查看</div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </scroller>
+        </div>
     </div>
     <v-menu :checked="1"></v-menu>
   </div>
@@ -30,7 +63,7 @@
 
   import Menu from '../../components/menu/menu.vue'
   import {mapActions} from 'vuex'
-  import {migrantsList} from '../../service/index'
+  import {workbenchList} from '../../service/index'
   export default {
     name: "message.vue",
     components: {
@@ -38,13 +71,12 @@
     },
     data() {
       return {
-        flowtype: '0',
-        category: '0',
-
         page: 0,
         rows: 5,
         list: [],
-
+        tasksList:[],
+        remindList:[],
+        searchText:'',
         scrollerPosition: null
       }
     },
@@ -74,8 +106,6 @@
         this.setNeedRefresh(false);
         this.page = 1;
         let params = {
-          'flowtype': this.flowtype,
-          'category': this.category,
           'page': this.page,
           'rows': this.rows,
           'proposerid': this.$store.getters.getLoginInfo()['proposerid']
@@ -103,13 +133,14 @@
         if (action === 'need_refresh') {
           loading = true;
         }
-        migrantsList(params, loading).then((rets)=>{
+        workbenchList(params, loading).then((rets)=>{
+          console.log("rets---->",rets)
           this.$api.process(rets, (data) => {
             if (action === 'refresh' || action === 'need_refresh') {
-              this.list = [];
+              this.data = [];
             }
             if (data) {
-              if (data.length < this.rows) {
+              if (rets.length < this.rows) {
                 done && done(true);
               } else {
                 done && done();
@@ -124,8 +155,6 @@
       refresh(done) {
         this.page = 1;
         let params = {
-          'flowtype': this.flowtype,
-          'category': this.category,
           'page': this.page,
           'rows': this.rows,
           'proposerid': this.$store.getters.getLoginInfo()['proposerid']
@@ -135,8 +164,6 @@
       infinite(done) {
         this.page = this.page + 1;
         let params = {
-          'flowtype': this.flowtype,
-          'category': this.category,
           'page': this.page,
           'rows': this.rows,
           'proposerid': this.$store.getters.getLoginInfo()['proposerid']
@@ -144,13 +171,75 @@
         this.load('infinite', params, done);
       },
       onItemClick(index, item) {
-        this.$router.push('/migrants_info/' + item.ID);
+        // this.$router.push('/migrants_info/' + item.ID);
+        console.log("跳转野蛮")
       },
     }
   }
 </script>
 
 <style lang="scss">
-
+  #workbench{
+    .content{
+      background: #edf1f4;
+      .task-title{
+        color: #163995;
+        font-size: 16px;/*no*/
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 80px 60px 20px;
+        .title{
+          width: 200px;
+          text-align: center;
+        }
+        .line{
+          width: 200px;
+          background:#163995 ;
+          height: 1px ;/*no*/
+        }
+        .left-line{
+          flex: 1;
+        }
+        .right-line{
+          flex: 1;
+        }
+      }
+      .page-infinite-listitem{
+        border-radius: 20px;
+        margin: 20px 20px 0 20px;
+        .info{
+          margin-bottom: 15px;
+          span {
+            color: #a0a0a0;
+          }
+        }
+        .info-title{
+          font-size:15px;/*no*/
+          font-weight: 600;
+          margin-bottom: 25px;
+        }
+        .start-btn{
+           background-color:#163995;
+           color:#fff;
+           width: 120px;
+           height: 40px;
+           line-height:40px;
+           padding: 10px 0;
+           border-radius: 40px;
+           text-align: center;
+           float: right;
+        }
+        .start-btn:active{
+          background-color:rgba(22,57,149,0.53);
+        }
+        .clear{
+          clear: both;
+        }
+      }
+    }
+  }
 
 </style>

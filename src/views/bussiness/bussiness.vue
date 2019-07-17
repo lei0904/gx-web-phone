@@ -6,15 +6,18 @@
     </router-link>
   </mt-header>
   <div class="content" :style="{height:contentH+'px'}">
+
     <div class="sudoku">
-      <div class="item">
+      <router-link :to="'/criminalRecord'" class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">罪犯档案</div>
-      </div>
-      <div class="item" @click="$router.push('/videopatrol')">
+      </router-link>
+
+      <router-link :to="'/videopatrol'"  class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">视频巡查</div>
-      </div>
+      </router-link >
+
       <div class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">应急处置</div>
