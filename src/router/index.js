@@ -42,6 +42,13 @@ const Personal = r => require.ensure([], () => r(require('@/views/personal/perso
 const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
 
 
+
+const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
+const clothingManage = r => require.ensure([], () => r(require('@/views/clothingManage/index')), 'clothingManage') //被服发放
+const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
+const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
+
+
 var routes = [
   {
     path: '',
@@ -75,6 +82,38 @@ var routes = [
     path: '/personal',
     name: 'Personal',
     component: Personal,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/bluetoothsynch',
+    name: 'bluetoothSynch',
+    component: bluetoothSynch,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingmanage',
+    name: 'clothingManage',
+    component: clothingManage,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingnew',
+    name: 'clothingNew',
+    component: clothingNew,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingsetting',
+    name: 'clothingSetting',
+    component: clothingSetting,
     meta:{
       value:1
     }

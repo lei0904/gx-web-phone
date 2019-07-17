@@ -2,8 +2,19 @@
 
 var px2rem = require('postcss-px2rem-exclude');
 
+
+// module.exports = {
+//   "plugins": [px2rem({remUnit: 75, exclude: '/node_modules/'})]
+// }
+
 module.exports = {
-  "plugins": [px2rem({remUnit: 75, exclude: '/node_modules/'})]
+  plugins: {
+    autoprefixer: {},
+    "postcss-px2rem-exclude": {
+      "remUnit": 75,
+      "exclude": /node_modules/i
+    }
+  }
 }
 
 /*module.exports = {

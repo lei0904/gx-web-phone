@@ -40,11 +40,11 @@
         <i class="icon-item item-1"></i>
         <div class="item-text">点名管理</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/clothingmanage')">
         <i class="icon-item item-1"></i>
         <div class="item-text">被服发放</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/bluetoothsynch')">
         <i class="icon-item item-1"></i>
         <div class="item-text">蓝牙同步</div>
       </div>
@@ -67,7 +67,9 @@
       }
     },
     methods:{
-
+      toPath(val){
+          this.$router.push(val)
+      }
     },
     created(){
       this.contentH = document.body.clientHeight - 120;
