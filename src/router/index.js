@@ -35,11 +35,12 @@ const PrisonDetail = r => require.ensure([], () => r(require('@/views/prisonDeta
 
 
 /*广西demo*/
-const Workbench = r => require.ensure([], () => r(require('@/views/workbench/workbench')), 'Workbench')
-const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
-const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
-const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
-const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
+const Workbench = r => require.ensure([], () => r(require('@/views/workbench/workbench')), 'Workbench');
+const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness');
+const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message');
+const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal');
+const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord');
+const CriminalDetail = r => require.ensure([], () => r(require('@/views/criminalDetail/criminalDetail')), 'CriminalDetail');
 
 
 var routes = [
@@ -93,6 +94,14 @@ var routes = [
     component: CriminalRecord,
     meta:{
       value:2
+    }
+  },
+  {
+    path: '/criminalDetail',
+    name: 'criminalDetail',
+    component: CriminalDetail,
+    meta:{
+      value:3
     }
   },
   /*{

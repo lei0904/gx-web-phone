@@ -10,71 +10,71 @@
         <scroller :on-refresh="refresh"
                   :on-infinite="infinite"
                   ref="scroller">
-          <div class="page-infinite-listitem" v-for="(item,index) in list" :class="{'npb': index  == list.length - 1}">
-            <div class="item"  @click="onItemClick(index,item)" >
-              <div class="info">
-                <div class="left">
-                  <label>姓名:</label>
-                  <span>{{item.name}}</span>
+            <div class="page-infinite-listitem" v-for="(item,index) in list">
+              <div class="item"  @click="onItemClick(index,item)" >
+                <div class="info">
+                  <div class="left">
+                    <label>姓名:</label>
+                    <span>{{item.name}}</span>
+                  </div>
+                  <div class="right">
+                    <label>编号:</label>
+                    <span>{{item.bh}}</span>
+                  </div>
                 </div>
-                <div class="right">
-                  <label>编号:</label>
-                  <span>{{item.bh}}</span>
+                <div class="info">
+                  <div class="left">
+                    <label>别名:</label>
+                    <span>{{item.bm}}</span>
+                  </div>
+                  <div class="right">
+                    <label>性别:</label>
+                    <span>{{item.sex}}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="info">
-                <div class="left">
-                  <label>别名:</label>
-                  <span>{{item.bm}}</span>
+                <div class="info">
+                  <div class="left">
+                    <label>出身日期:</label>
+                    <span>{{item.birthday}}</span>
+                  </div>
+                  <div class="right">
+                    <label>罪名:</label>
+                    <span>{{item.zm}}</span>
+                  </div>
                 </div>
-                <div class="right">
-                  <label>性别:</label>
-                  <span>{{item.sex}}</span>
+                <div class="info">
+                  <div class="left">
+                    <label>监狱:</label>
+                    <span>{{item.jy}}</span>
+                  </div>
+                  <div class="right">
+                    <label>监区:</label>
+                    <span>{{item.jq}}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="info">
-                <div class="left">
-                  <label>出身日期:</label>
-                  <span>{{item.birthday}}</span>
+                <div class="info">
+                  <div class="left">
+                    <label>执行起日:</label>
+                    <span>{{item.zxqr}}</span>
+                  </div>
+                  <div class="right">
+                    <label>执行止日:</label>
+                    <span>{{item.zxzr}}</span>
+                  </div>
                 </div>
-                <div class="right">
-                  <label>罪名:</label>
-                  <span>{{item.zm}}</span>
-                </div>
-              </div>
-              <div class="info">
-                <div class="left">
-                  <label>监狱:</label>
-                  <span>{{item.jy}}</span>
-                </div>
-                <div class="right">
-                  <label>监区:</label>
-                  <span>{{item.jq}}</span>
-                </div>
-              </div>
-              <div class="info">
-                <div class="left">
-                  <label>执行起日:</label>
-                  <span>{{item.zxqr}}</span>
-                </div>
-                <div class="right">
-                  <label>执行止日:</label>
-                  <span>{{item.zxzr}}</span>
-                </div>
-              </div>
-              <div class="info">
-                <div class="left">
-                  <label>入监日期:</label>
-                  <span>{{item.rjrq}}</span>
-                </div>
-                <div class="right">
-                  <label>余刑:</label>
-                  <span>{{item.yx}}</span>
+                <div class="info">
+                  <div class="left">
+                    <label>入监日期:</label>
+                    <span>{{item.rjrq}}</span>
+                  </div>
+                  <div class="right">
+                    <label>余刑:</label>
+                    <span>{{item.yx}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-           </scroller>
+        </scroller>
       </div>
     </div>
   </div>
@@ -86,6 +86,10 @@
   import {criminalRecord} from '../../service/index'
     export default {
         name: "criminalRecord",
+      ...mapActions([
+        'setCriminal',
+        'setNeedRefresh'
+      ]),
         data(){
           return {
             page: 0,
@@ -118,8 +122,10 @@
         this.scrollerPosition = this.$refs['scroller'].getPosition();
       },
       methods: {
+
         ...mapActions([
           'setNeedRefresh',
+          'setCriminal'
         ]),
         load(action, params, done) {
           let loading = false;
@@ -164,18 +170,20 @@
         },
         onItemClick(index, item) {
           // this.$router.push('/migrants_info/' + item.ID);
-          console.log("跳转详情")
+          console.log("跳转详情--->",item)
+          this.$router.push({path:'/criminalDetail/'});
+          this.setCriminal(item)
         },
       }
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .criminal-record{
   .content{
     .scroller-wrapper{
       .page-infinite-listitem{
-        background-color: #edf1f4;
+        background-color: #f0f0f0;
         border-radius: 20px;
         margin: 20px 20px 0 20px;
         background-image:url("../../../static/img/icon-detail.png");
@@ -190,6 +198,11 @@
           }
         }
       }
+      .page-infinite-listitem:active{
+        background-color:rgba(237,241,244,0.53);
+        background-image:url("../../../static/img/icon-detail-active.png");
+      }
+
     }
   }
 }

@@ -36,6 +36,8 @@ const state = {
 
   scrollTop: 0,
   outsiders: [],
+  criminalInfo:[],
+
   needRefresh: false
 };
 
@@ -45,7 +47,10 @@ const getters = {
   },
   getNeedRefresh: (state) => () => {
     return state.needRefresh;
-  }
+  },
+  getCriminal:((state) => () =>{
+    return state.criminalInfo;
+  })
 };
 
 const actions = {
@@ -65,6 +70,9 @@ const actions = {
 
   setNeedRefresh(store, data) {
     store.commit('SET_NEED_REFRESH', data)
+  },
+  setCriminal(store,data){
+    store.commit('SET_CRIMINAL_INFO',data)
   }
 };
 
@@ -87,6 +95,9 @@ const mutations = {
 
   'SET_NEED_REFRESH'(state, data) {
     state.needRefresh = data;
+  },
+  'SET_CRIMINAL_INFO'(state,data){
+    state.criminalInfo = data;
   }
 };
 
