@@ -52,6 +52,16 @@ if (Vue.$ces.Config.service === 'static') {
   var workbenchList = (params, loading) => setPromise(workbench.tasksList, loading);
   var criminalRecord = (params, loading) => setPromise(record.list, loading);
   var videoPatrolList=(params,loading)=>setPromise(videoPatrol,loading)
+
+  var criminalDynamic = (params, loading) => setPromise(record.dynamicList, loading);
+  var criminalInstructor= (params, loading) => setPromise(record.instructorList, loading);
+  var criminalTreatment= (params, loading) => setPromise(record.treatmentList, loading);
+  var criminalEducation= (params, loading) => setPromise(record.educationList, loading);
+  var penologicalList= (params, loading) => setPromise(record.penologicalList, loading);
+
+
+
+
 } else {
   var getFlowNode = (params) => Api.post('dztz/api/flow!getFlowNode.action', params);
 
@@ -82,5 +92,10 @@ export {
   migrantsGetById,
   videoPatrolList,
   workbenchList,
-  criminalRecord
+  criminalRecord,
+  criminalDynamic,
+  criminalInstructor,
+  criminalTreatment,
+  criminalEducation,
+  penologicalList
 }

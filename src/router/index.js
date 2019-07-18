@@ -39,10 +39,17 @@ const Workbench = r => require.ensure([], () => r(require('@/views/workbench/wor
 const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
 const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
 const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
-const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
+const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord');
 const CriminalDetail = r => require.ensure([], () => r(require('@/views/criminalDetail/criminalDetail')), 'CriminalDetail');
+const CriminalDynamic = r => require.ensure([], () => r(require('@/views/criminalDynamic/criminalDynamic')), 'CriminalDynamic');
+const Criminalnstructor = r => require.ensure([], () => r(require('@/views/criminalnstructor/criminalnstructor')), 'Criminalnstructor');
+const CriminalTreatment = r => require.ensure([], () => r(require('@/views/criminalTreatment/criminalTreatment')), 'CriminalTreatment')
+const CriminalEducation = r => require.ensure([], () => r(require('@/views/criminalEducation/criminalEducation')), 'CriminalEducation')
+const PenologicalManage = r => require.ensure([], () => r(require('@/views/penologicalManage/penologicalManage')), 'PenologicalManage')
+
 
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
+
 
 
 
@@ -153,6 +160,59 @@ var routes = [
       value:3
     }
   },
+  {
+    path: '/criminalDynamic',
+    name: 'criminalDynamic',
+    component: CriminalDynamic,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalnstructor',
+    name: 'criminalnstructor',
+    component: Criminalnstructor,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalTreatment',
+    name: 'criminalTreatment',
+    component: CriminalTreatment,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalEducation',
+    name: 'criminalEducation',
+    component: CriminalEducation,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalEducation',
+    name: 'criminalEducation',
+    component: CriminalEducation,
+    meta:{
+      value:4
+    }
+  },
+
+  {
+    path: '/penologicalManage',
+    name: 'penologicalManage',
+    component: PenologicalManage,
+    meta:{
+      value:4
+    }
+  },
+
+
+
+
   /*{
     path: '/migrants',
     redirect: 'migrants_mine_page',

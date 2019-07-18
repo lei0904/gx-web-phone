@@ -226,7 +226,6 @@
            color:#fff;
            width: 120px;
            height: 40px;
-           line-height:40px;
            padding: 10px 0;
            border-radius: 40px;
            text-align: center;
