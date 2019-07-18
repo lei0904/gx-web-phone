@@ -40,6 +40,7 @@ const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bus
 const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
 const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
 const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
+const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
 
 
 
@@ -116,6 +117,14 @@ var routes = [
     component: clothingSetting,
     meta:{
       value:1
+    }
+  },
+  {
+    path:'/videopatrol',
+    name:'Videopatrol',
+    component:Videopatrol,
+    meta:{
+      value:2
     }
   },
   {

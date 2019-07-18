@@ -12,10 +12,12 @@
         <i class="icon-item item-1"></i>
         <div class="item-text">罪犯档案</div>
       </router-link>
-      <div class="item">
+
+      <router-link :to="'/videopatrol'"  class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">视频巡查</div>
-      </div>
+      </router-link >
+
       <div class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">应急处置</div>
