@@ -35,12 +35,21 @@ const PrisonDetail = r => require.ensure([], () => r(require('@/views/prisonDeta
 
 
 /*广西demo*/
-const Workbench = r => require.ensure([], () => r(require('@/views/workbench/workbench')), 'Workbench');
-const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness');
-const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message');
-const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal');
-const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord');
+const Workbench = r => require.ensure([], () => r(require('@/views/workbench/workbench')), 'Workbench')
+const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
+const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
+const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
+const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
 const CriminalDetail = r => require.ensure([], () => r(require('@/views/criminalDetail/criminalDetail')), 'CriminalDetail');
+
+const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
+
+
+
+const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
+const clothingManage = r => require.ensure([], () => r(require('@/views/clothingManage/index')), 'clothingManage') //被服发放
+const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
+const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
 
 var routes = [
@@ -78,6 +87,46 @@ var routes = [
     component: Personal,
     meta:{
       value:1
+    }
+  },
+  {
+    path: '/bluetoothsynch',
+    name: 'bluetoothSynch',
+    component: bluetoothSynch,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingmanage',
+    name: 'clothingManage',
+    component: clothingManage,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingnew',
+    name: 'clothingNew',
+    component: clothingNew,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/clothingsetting',
+    name: 'clothingSetting',
+    component: clothingSetting,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path:'/videopatrol',
+    name:'Videopatrol',
+    component:Videopatrol,
+    meta:{
+      value:2
     }
   },
   {

@@ -6,6 +6,7 @@ import * as area from './data/area'
 import * as cause from './data/cause'
 import * as FlowNode from './data/flow_node'
 import * as flow from './data/flow'
+import  videoPatrol from './data/videopatrol'
 
 /*广西demo*/
 import * as workbench from './data/workbenchList'
@@ -50,6 +51,7 @@ if (Vue.$ces.Config.service === 'static') {
 
   var workbenchList = (params, loading) => setPromise(workbench.tasksList, loading);
   var criminalRecord = (params, loading) => setPromise(record.list, loading);
+  var videoPatrolList=(params,loading)=>setPromise(videoPatrol,loading)
 } else {
   var getFlowNode = (params) => Api.post('dztz/api/flow!getFlowNode.action', params);
 
@@ -64,6 +66,8 @@ if (Vue.$ces.Config.service === 'static') {
   var migrantsList = (params, loading) => Api.post('dztz/api/flow!list.action', params, loading);
   var migrantsGetById = (params) => Api.post('dztz/api/flow!getById.action', params);
 
+
+
 }
 
 export {
@@ -76,7 +80,7 @@ export {
   finishProcess,
   destroyProcess,
   migrantsGetById,
-
+  videoPatrolList,
   workbenchList,
   criminalRecord
 }
