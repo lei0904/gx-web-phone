@@ -8,11 +8,11 @@ const MigrantsInfo = r => require.ensure([], () => r(require('@/views/migrants/i
 const MigrantsAudit = r => require.ensure([], () => r(require('@/views/migrants/audit')), 'MigrantsAudit')
 
 /*
-const Migrants = r => require.ensure([], () => r(require('@/views/migrants/index.vue')), 'Migrants')
-const MigrantsMinePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_mine_page.vue')), 'MigrantsMinePage')
-const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migrants/migrants_audit_page.vue')), 'MigrantsAuditPage')
-const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_done_page.vue')), 'MigrantsDonePage')
-*/
+ const Migrants = r => require.ensure([], () => r(require('@/views/migrants/index.vue')), 'Migrants')
+ const MigrantsMinePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_mine_page.vue')), 'MigrantsMinePage')
+ const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migrants/migrants_audit_page.vue')), 'MigrantsAuditPage')
+ const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_done_page.vue')), 'MigrantsDonePage')
+ */
 
 const Cause = r => require.ensure([], () => r(require('@/views/cause/cause')), 'Cause')
 const Area = r => require.ensure([], () => r(require('@/views/area/area')), 'Area')
@@ -26,12 +26,10 @@ const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migra
 const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/page_done')), 'ExternalTrafficDone')
 
 
-
 const CriminalQuery = r => require.ensure([], () => r(require('@/views/criminalQuery/criminalQuery')), 'CriminalQuery')
 
 const Prison = r => require.ensure([], () => r(require('@/views/prison/prison')), 'Prison')
 const PrisonDetail = r => require.ensure([], () => r(require('@/views/prisonDetail/prisonDetail')), 'PrisonDetail')
-
 
 
 /*广西demo*/
@@ -49,8 +47,6 @@ const PenologicalManage = r => require.ensure([], () => r(require('@/views/penol
 
 
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
-
-
 
 
 const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
@@ -71,7 +67,6 @@ const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRec
 const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
 
 
-
 var routes = [
   {
     path: '',
@@ -81,180 +76,184 @@ var routes = [
     path: '/workbench',
     name: 'Workbench',
     component: Workbench,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/bussiness',
     name: 'Bussiness',
     component: Bussiness,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/message',
     name: 'Message',
     component: Message,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/personal',
     name: 'Personal',
     component: Personal,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/bluetoothsynch',
     name: 'bluetoothSynch',
     component: bluetoothSynch,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/clothingmanage',
     name: 'clothingManage',
     component: clothingManage,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/clothingnew',
     name: 'clothingNew',
     component: clothingNew,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/clothingsetting',
     name: 'clothingSetting',
     component: clothingSetting,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
-    path:'/videopatrol',
-    name:'Videopatrol',
-    component:Videopatrol,
-    meta:{
-      value:2
+    path: '/videopatrol',
+    name: 'Videopatrol',
+    component: Videopatrol,
+    meta: {
+      value: 2
     }
   },
   {
     path: '/personal',
     name: 'Personal',
     component: Personal,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/criminalRecord',
     name: 'criminalRecord',
     component: CriminalRecord,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
   {
     path: '/rollcallmanage',
     name: 'rollCallManage',
     component: rollCallManage,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
   {
     path: '/newrollcall',
     name: 'newRollCall',
     component: newRollCall,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
   {
     path: '/datasummary',
     name: 'dataSummary',
     component: dataSummary,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
-  {path: '/talkManage',
+  },
+  {
+    path: '/talkManage',
     name: 'talkManage',
     component: talkManage,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
-  {path: '/talkRecord',
+  {
+    path: '/talkRecord',
     name: 'talkRecord',
     component: talkRecord,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
-  {path: '/newTalk',
+  {
+    path: '/newTalk',
     name: 'newTalk',
     component: newTalk,
-    meta:{
-      value:2
+    meta: {
+      value: 2
     }
   },
   {
     path: '/criminalDetail',
     name: 'criminalDetail',
     component: CriminalDetail,
-    meta:{
-      value:3
+    meta: {
+      value: 3
     }
   },
   {
     path: '/criminalDynamic',
     name: 'criminalDynamic',
     component: CriminalDynamic,
-    meta:{
-      value:4
+    meta: {
+      value: 4
     }
   },
   {
     path: '/criminalnstructor',
     name: 'criminalnstructor',
     component: Criminalnstructor,
-    meta:{
-      value:4
+    meta: {
+      value: 4
     }
   },
   {
     path: '/criminalTreatment',
     name: 'criminalTreatment',
     component: CriminalTreatment,
-    meta:{
-      value:4
+    meta: {
+      value: 4
     }
   },
   {
     path: '/criminalEducation',
     name: 'criminalEducation',
     component: CriminalEducation,
-    meta:{
-      value:4
+    meta: {
+      value: 4
     }
   },
   {
     path: '/criminalEducation',
     name: 'criminalEducation',
     component: CriminalEducation,
-    meta:{
-      value:4
+    meta: {
+      value: 4
     }
   },
 
@@ -262,56 +261,8 @@ var routes = [
     path: '/penologicalManage',
     name: 'penologicalManage',
     component: PenologicalManage,
-    meta:{
-      value:4
-    }
-  },
-
-
-
-
-  /*{
-    path: '/migrants',
-    redirect: 'migrants_mine_page',
-    name: 'Migrants',
-    component: Migrants,
-    children: [
-      {
-        path: '/migrants_mine_page',
-        component: MigrantsMinePage
-      },
-      {
-        path: '/migrants_audit_page',
-        component: MigrantsAuditPage
-      },
-      {
-        path: '/migrants_done_page',
-        component: MigrantsDonePage
-      }
-    ]
-  },
-  {
-    path: '/graphicsummary',
-    name: 'graphicSummary',
-    component: graphicSummary,
-    meta:{
-      value:2
-    }
-  },
-  {
-    path: '/medicinemanage',
-    name: 'medicineManage',
-    component: medicineManage,
-    meta:{
-      value:2
-    }
-  },
-  {
-    path: '/medicinemanagenew',
-    name: 'medicineManageNew',
-    component: medicineManageNew,
-    meta:{
-      value:2
+    meta: {
+      value: 4
     }
   }
 
