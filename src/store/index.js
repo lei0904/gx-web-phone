@@ -15,27 +15,11 @@ const state = {
     proposerid: '3404226',
     dbMc: '34095021',
   },
-
-  /*loginInfo: {
-    dbBm: '第十九监区',
-    proposerid: '3404278',
-    dbMc: '34095021',
-  },*/
-
-  /*loginInfo: {
-    dbBm: '第十九监区',
-    proposerid: '3404015',
-    dbMc: '34095021',
-  },*/
-
-  /*loginInfo: {
-    dbBm: '第十九监区',
-    proposerid: '3404188',
-    dbMc: '34095021',
-  },*/
-
   scrollTop: 0,
   outsiders: [],
+  criminalInfo:[],
+  pageId:'',
+
   needRefresh: false
 };
 
@@ -45,7 +29,13 @@ const getters = {
   },
   getNeedRefresh: (state) => () => {
     return state.needRefresh;
-  }
+  },
+  getCriminal:((state) => () =>{
+    return state.criminalInfo;
+  }),
+  getPageId:((state) => () =>{
+    return state.pageId;
+  })
 };
 
 const actions = {
@@ -62,9 +52,14 @@ const actions = {
   clearOutsider(store) {
     store.commit('CLEAR_OUTSIDER')
   },
-
   setNeedRefresh(store, data) {
     store.commit('SET_NEED_REFRESH', data)
+  },
+  setCriminal(store,data){
+    store.commit('SET_CRIMINAL_INFO',data)
+  },
+  setPageIds(store,data){
+    store.commit('SET_PAGE_ID',data)
   }
 };
 
@@ -87,6 +82,12 @@ const mutations = {
 
   'SET_NEED_REFRESH'(state, data) {
     state.needRefresh = data;
+  },
+  'SET_CRIMINAL_INFO'(state,data){
+    state.criminalInfo = data;
+  },
+  'SET_PAGE_ID'(state,data){
+    state.pageId = data;
   }
 };
 

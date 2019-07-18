@@ -39,8 +39,17 @@ const Workbench = r => require.ensure([], () => r(require('@/views/workbench/wor
 const Bussiness = r => require.ensure([], () => r(require('@/views/bussiness/bussiness')), 'Bussiness')
 const Message = r => require.ensure([], () => r(require('@/views/message/message')), 'Message')
 const Personal = r => require.ensure([], () => r(require('@/views/personal/personal')), 'Personal')
-const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord')
+const CriminalRecord = r => require.ensure([], () => r(require('@/views/criminalRecord/criminalRecord')), 'CriminalRecord');
+const CriminalDetail = r => require.ensure([], () => r(require('@/views/criminalDetail/criminalDetail')), 'CriminalDetail');
+const CriminalDynamic = r => require.ensure([], () => r(require('@/views/criminalDynamic/criminalDynamic')), 'CriminalDynamic');
+const Criminalnstructor = r => require.ensure([], () => r(require('@/views/criminalnstructor/criminalnstructor')), 'Criminalnstructor');
+const CriminalTreatment = r => require.ensure([], () => r(require('@/views/criminalTreatment/criminalTreatment')), 'CriminalTreatment')
+const CriminalEducation = r => require.ensure([], () => r(require('@/views/criminalEducation/criminalEducation')), 'CriminalEducation')
+const PenologicalManage = r => require.ensure([], () => r(require('@/views/penologicalManage/penologicalManage')), 'PenologicalManage')
+
+
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
+
 
 
 
@@ -56,6 +65,11 @@ const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallMan
 const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
 const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
 const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
+
+const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
+const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
+const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
+
 
 
 var routes = [
@@ -174,6 +188,107 @@ var routes = [
     meta:{
       value:2
     }
+  {path: '/talkManage',
+    name: 'talkManage',
+    component: talkManage,
+    meta:{
+      value:2
+    }
+  },
+  {path: '/talkRecord',
+    name: 'talkRecord',
+    component: talkRecord,
+    meta:{
+      value:2
+    }
+  },
+  {path: '/newTalk',
+    name: 'newTalk',
+    component: newTalk,
+    meta:{
+      value:2
+    }
+  },
+  {
+    path: '/criminalDetail',
+    name: 'criminalDetail',
+    component: CriminalDetail,
+    meta:{
+      value:3
+    }
+  },
+  {
+    path: '/criminalDynamic',
+    name: 'criminalDynamic',
+    component: CriminalDynamic,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalnstructor',
+    name: 'criminalnstructor',
+    component: Criminalnstructor,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalTreatment',
+    name: 'criminalTreatment',
+    component: CriminalTreatment,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalEducation',
+    name: 'criminalEducation',
+    component: CriminalEducation,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/criminalEducation',
+    name: 'criminalEducation',
+    component: CriminalEducation,
+    meta:{
+      value:4
+    }
+  },
+
+  {
+    path: '/penologicalManage',
+    name: 'penologicalManage',
+    component: PenologicalManage,
+    meta:{
+      value:4
+    }
+  },
+
+
+
+
+  /*{
+    path: '/migrants',
+    redirect: 'migrants_mine_page',
+    name: 'Migrants',
+    component: Migrants,
+    children: [
+      {
+        path: '/migrants_mine_page',
+        component: MigrantsMinePage
+      },
+      {
+        path: '/migrants_audit_page',
+        component: MigrantsAuditPage
+      },
+      {
+        path: '/migrants_done_page',
+        component: MigrantsDonePage
+      }
+    ]
   },
   {
     path: '/graphicsummary',

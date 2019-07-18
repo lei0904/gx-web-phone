@@ -37,6 +37,11 @@ Vue.use(Dragbtn)
 
 import store from './store/'
 
+// 路由列表
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+Vue.use(iView);
+
 Ces.ready(function () {
   /* eslint-disable no-new */
   new Vue({

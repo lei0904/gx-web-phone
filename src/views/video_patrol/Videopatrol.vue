@@ -1,40 +1,33 @@
 <template>
   <div>
-    <div>
-
-      <div class="page-part">
-        <mt-header fixed title="视频巡查">
-          <a @click="$router.back()" slot="left">
-            <mt-button icon="back"></mt-button>
-          </a>
-        </mt-header>
-      </div>
+    <mt-header fixed title="视频巡查">
+      <mt-button icon="back" slot="left" @click="$router.back()"></mt-button>
+    </mt-header>
+    <div class="content">
       <div class="casad-content">
         <Cascader :data="casad1" placeholder="请选择类型" v-model="value1" @on-change="cascader1change" size="large"></Cascader>
         <Cascader :data="casad2" placeholder="请选择位置" v-model="value2" @on-change="cascader2change" size="large"></Cascader>
       </div>
 
-      <div class="content">
-        <div class="scroller-wrapper">
-          <scroller :on-refresh="refresh"
-                    :on-infinite="infinite"
-                    ref="scroller">
-            <div v-for="(item, index) in list"
-                 class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-              <div class="title">{{index + 1}}. {{item.FQBM}}</div>
-              <div class="info">位置：<span>{{item.position}}</span></div>
-              <video-player  class="video-player vjs-custom-skin no-fastclick"
-                             ref="videoPlayer"
-                             :playsinline="true"
-                             :options="playerOptions"
-              ></video-player>
-            </div>
-          </scroller>
-        </div>
+      <div class="scroller-wrapper">
+        <scroller :on-refresh="refresh"
+                  :on-infinite="infinite"
+                  ref="scroller">
+          <div v-for="(item, index) in list"
+               class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
+            <div class="title">{{index + 1}}. {{item.FQBM}}</div>
+            <div class="info">位置：<span>{{item.position}}</span></div>
+            <video-player  class="video-player vjs-custom-skin no-fastclick"
+                           ref="videoPlayer"
+                           :playsinline="true"
+                           :options="playerOptions"
+            ></video-player>
+          </div>
+        </scroller>
       </div>
-<!--      <v-menu :checked="1"></v-menu>-->
     </div>
   </div>
+
 </template>
 
 <script>
@@ -275,7 +268,5 @@
     margin-top: -1.3em;
     touch-action: none;
   }
-  .casad-content{
-    margin-top: 100px;
-  }
+
 </style>
