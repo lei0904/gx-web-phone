@@ -26,10 +26,11 @@
         <i class="icon-item item-1"></i>
         <div class="item-text">日常监管</div>
       </div>
-      <div class="item">
+      <router-link :to="'/talkManage'" class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">个别谈话管理</div>
-      </div>
+      </router-link>
+
       <div class="item">
         <i class="icon-item item-1"></i>
         <div class="item-text">工具收发管理</div>

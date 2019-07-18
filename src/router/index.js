@@ -58,6 +58,11 @@ const clothingManage = r => require.ensure([], () => r(require('@/views/clothing
 const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
+const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
+const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
+const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
+
+
 
 var routes = [
   {
@@ -148,6 +153,27 @@ var routes = [
     path: '/criminalRecord',
     name: 'criminalRecord',
     component: CriminalRecord,
+    meta:{
+      value:2
+    }
+  },
+  {path: '/talkManage',
+    name: 'talkManage',
+    component: talkManage,
+    meta:{
+      value:2
+    }
+  },
+  {path: '/talkRecord',
+    name: 'talkRecord',
+    component: talkRecord,
+    meta:{
+      value:2
+    }
+  },
+  {path: '/newTalk',
+    name: 'newTalk',
+    component: newTalk,
     meta:{
       value:2
     }
