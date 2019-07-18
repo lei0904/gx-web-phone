@@ -34,11 +34,11 @@
         <i class="icon-item item-1"></i>
         <div class="item-text">工具收发管理</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/medicinemanage')">
         <i class="icon-item item-1"></i>
         <div class="item-text">服药管理</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/rollcallmanage')">
         <i class="icon-item item-1"></i>
         <div class="item-text">点名管理</div>
       </div>

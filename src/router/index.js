@@ -45,9 +45,17 @@ const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patro
 
 
 const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
+
 const clothingManage = r => require.ensure([], () => r(require('@/views/clothingManage/index')), 'clothingManage') //被服发放
 const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
+
+const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
+const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
+const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
+const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
+const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
+const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
 
 var routes = [
@@ -143,66 +151,55 @@ var routes = [
       value:2
     }
   },
-  /*{
-    path: '/migrants',
-    redirect: 'migrants_mine_page',
-    name: 'Migrants',
-    component: Migrants,
-    children: [
-      {
-        path: '/migrants_mine_page',
-        component: MigrantsMinePage
-      },
-      {
-        path: '/migrants_audit_page',
-        component: MigrantsAuditPage
-      },
-      {
-        path: '/migrants_done_page',
-        component: MigrantsDonePage
-      }
-    ]
+  {
+    path: '/rollcallmanage',
+    name: 'rollCallManage',
+    component: rollCallManage,
+    meta:{
+      value:2
+    }
   },
   {
-    path: '/migrants_item',
-    name: 'MigrantsItem',
-    component: MigrantsItem
+    path: '/newrollcall',
+    name: 'newRollCall',
+    component: newRollCall,
+    meta:{
+      value:2
+    }
   },
   {
-    path: '/migrants_info/:id',
-    name: 'MigrantsInfo',
-    component: MigrantsInfo
+    path: '/datasummary',
+    name: 'dataSummary',
+    component: dataSummary,
+    meta:{
+      value:2
+    }
   },
   {
-    path: '/migrants_audit/:id',
-    name: 'MigrantsAudit',
-    component: MigrantsAudit
+    path: '/graphicsummary',
+    name: 'graphicSummary',
+    component: graphicSummary,
+    meta:{
+      value:2
+    }
   },
   {
-    path: '/person',
-    name: 'Person',
-    component: Person
+    path: '/medicinemanage',
+    name: 'medicineManage',
+    component: medicineManage,
+    meta:{
+      value:2
+    }
   },
   {
-    path: '/area/:type',
-    name: 'Area',
-    component: Area
-  },
-  {
-    path: '/criminalQuery',
-    name: 'CriminalQuery',
-    component: CriminalQuery
-  },
-  {
-    path: '/prison',
-    name: 'prison',
-    component: Prison
-  },
-  {
-    path: '/prisonDetail',
-    name: 'PrisonDetail',
-    component: PrisonDetail
-  }*/
+    path: '/medicinemanagenew',
+    name: 'medicineManageNew',
+    component: medicineManageNew,
+    meta:{
+      value:2
+    }
+  }
+
 ];
 
 Vue.use(Router);

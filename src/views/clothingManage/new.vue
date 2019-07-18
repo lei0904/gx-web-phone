@@ -1,5 +1,5 @@
 <template>
-  <div id="new">
+  <div id="clothingManageNew">
     <mt-header fixed title="新增被服发放">
       <router-link to="/clothingmanage" slot="left">
         <mt-button icon="back"></mt-button>
@@ -205,7 +205,7 @@
 </script>
 
 <style lang="scss">
-  #new {
+  #clothingManageNew {
     background: #f0f0f4;
     min-height: 100vh;
     .mint-actionsheet-listitem{
