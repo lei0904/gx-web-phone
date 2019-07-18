@@ -11,6 +11,7 @@
       <mt-cell title="选择谈话地点" is-link @click.native="sheetVisible.warehouseVisible = true"
                :value="newData.warehouse"></mt-cell>
       <mt-actionsheet v-if="!isDetail" :actions="actions.warehouseActions" v-model="sheetVisible.warehouseVisible"></mt-actionsheet>
+      <mt-cell v-if="isDetail" title="谈话时间" value="2019-7-17"></mt-cell>
       <mt-cell title="是否重点对象">
         <mt-switch v-model="value"></mt-switch>
       </mt-cell>
