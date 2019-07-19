@@ -44,7 +44,9 @@ const Criminalnstructor = r => require.ensure([], () => r(require('@/views/crimi
 const CriminalTreatment = r => require.ensure([], () => r(require('@/views/criminalTreatment/criminalTreatment')), 'CriminalTreatment')
 const CriminalEducation = r => require.ensure([], () => r(require('@/views/criminalEducation/criminalEducation')), 'CriminalEducation')
 const PenologicalManage = r => require.ensure([], () => r(require('@/views/penologicalManage/penologicalManage')), 'PenologicalManage')
-
+const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
+const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
+const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
 
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
 
@@ -59,12 +61,11 @@ const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCall
 const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
 const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
 const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
+
 const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
 const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
-const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
-const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
-const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
+
 
 
 var routes = [
@@ -103,87 +104,7 @@ var routes = [
     meta: {
       value: 1
     }
-  },
-  {
-    path: '/bluetoothsynch',
-    name: 'bluetoothSynch',
-    component: bluetoothSynch,
-    meta: {
-      value: 1
-    }
-  },
-  {
-    path: '/clothingmanage',
-    name: 'clothingManage',
-    component: clothingManage,
-    meta: {
-      value: 1
-    }
-  },
-  {
-    path: '/clothingnew',
-    name: 'clothingNew',
-    component: clothingNew,
-    meta: {
-      value: 1
-    }
-  },
-  {
-    path: '/clothingsetting',
-    name: 'clothingSetting',
-    component: clothingSetting,
-    meta: {
-      value: 1
-    }
-  },
-  {
-    path: '/videopatrol',
-    name: 'Videopatrol',
-    component: Videopatrol,
-    meta: {
-      value: 2
-    }
-  },
-  {
-    path: '/personal',
-    name: 'Personal',
-    component: Personal,
-    meta: {
-      value: 1
-    }
-  },
-  {
-    path: '/criminalRecord',
-    name: 'criminalRecord',
-    component: CriminalRecord,
-    meta: {
-      value: 2
-    }
-  },
-  {
-    path: '/rollcallmanage',
-    name: 'rollCallManage',
-    component: rollCallManage,
-    meta: {
-      value: 2
-    }
-  },
-  {
-    path: '/newrollcall',
-    name: 'newRollCall',
-    component: newRollCall,
-    meta: {
-      value: 2
-    }
-  },
-  {
-    path: '/datasummary',
-    name: 'dataSummary',
-    component: dataSummary,
-    meta: {
-      value: 2
-    }
-  },
+  },,
   {
     path: '/talkManage',
     name: 'talkManage',
@@ -256,13 +177,119 @@ var routes = [
       value: 4
     }
   },
-
   {
     path: '/penologicalManage',
     name: 'penologicalManage',
     component: PenologicalManage,
     meta: {
       value: 4
+    }
+  },
+  {
+    path: '/videopatrol',
+    name: 'Videopatrol',
+    component: Videopatrol,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/personal',
+    name: 'Personal',
+    component: Personal,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/criminalRecord',
+    name: 'criminalRecord',
+    component: CriminalRecord,
+    meta: {
+      value: 2
+    }
+  },
+
+  {
+    path: '/bluetoothsynch',
+    name: 'bluetoothSynch',
+    component: bluetoothSynch,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingmanage',
+    name: 'clothingManage',
+    component: clothingManage,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingnew',
+    name: 'clothingNew',
+    component: clothingNew,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingsetting',
+    name: 'clothingSetting',
+    component: clothingSetting,
+    meta: {
+      value: 1
+    }
+  },
+
+
+  {
+    path: '/rollcallmanage',
+    name: 'rollCallManage',
+    component: rollCallManage,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/newrollcall',
+    name: 'newRollCall',
+    component: newRollCall,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/datasummary',
+    name: 'dataSummary',
+    component: dataSummary,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/graphicsummary',
+    name: 'graphicSummary',
+    component: graphicSummary,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/medicinemanage',
+    name: 'medicineManage',
+    component: medicineManage,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/medicinemanageNew',
+    name: 'medicineManageNew',
+    component: medicineManageNew,
+    meta: {
+      value: 2
     }
   }
 
