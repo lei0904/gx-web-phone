@@ -8,11 +8,11 @@ const MigrantsInfo = r => require.ensure([], () => r(require('@/views/migrants/i
 const MigrantsAudit = r => require.ensure([], () => r(require('@/views/migrants/audit')), 'MigrantsAudit')
 
 /*
-const Migrants = r => require.ensure([], () => r(require('@/views/migrants/index.vue')), 'Migrants')
-const MigrantsMinePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_mine_page.vue')), 'MigrantsMinePage')
-const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migrants/migrants_audit_page.vue')), 'MigrantsAuditPage')
-const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_done_page.vue')), 'MigrantsDonePage')
-*/
+ const Migrants = r => require.ensure([], () => r(require('@/views/migrants/index.vue')), 'Migrants')
+ const MigrantsMinePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_mine_page.vue')), 'MigrantsMinePage')
+ const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migrants/migrants_audit_page.vue')), 'MigrantsAuditPage')
+ const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/migrants_done_page.vue')), 'MigrantsDonePage')
+ */
 
 const Cause = r => require.ensure([], () => r(require('@/views/cause/cause')), 'Cause')
 const Area = r => require.ensure([], () => r(require('@/views/area/area')), 'Area')
@@ -26,12 +26,10 @@ const MigrantsAuditPage = r => require.ensure([], () => r(require('@/views/migra
 const MigrantsDonePage = r => require.ensure([], () => r(require('@/views/migrants/page_done')), 'ExternalTrafficDone')
 
 
-
 const CriminalQuery = r => require.ensure([], () => r(require('@/views/criminalQuery/criminalQuery')), 'CriminalQuery')
 
 const Prison = r => require.ensure([], () => r(require('@/views/prison/prison')), 'Prison')
 const PrisonDetail = r => require.ensure([], () => r(require('@/views/prisonDetail/prisonDetail')), 'PrisonDetail')
-
 
 
 /*广西demo*/
@@ -46,25 +44,31 @@ const Criminalnstructor = r => require.ensure([], () => r(require('@/views/crimi
 const CriminalTreatment = r => require.ensure([], () => r(require('@/views/criminalTreatment/criminalTreatment')), 'CriminalTreatment')
 const CriminalEducation = r => require.ensure([], () => r(require('@/views/criminalEducation/criminalEducation')), 'CriminalEducation')
 const PenologicalManage = r => require.ensure([], () => r(require('@/views/penologicalManage/penologicalManage')), 'PenologicalManage')
-
+const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
+const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
+const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
 
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
 
 
-
-
 const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
+
 const clothingManage = r => require.ensure([], () => r(require('@/views/clothingManage/index')), 'clothingManage') //被服发放
 const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
-const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
-const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
-const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
+
 const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')), 'myapp') //我的应用
 const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
 
 
+const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
+const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
+const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
+const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
+
+const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
+const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
 
 
@@ -77,62 +81,30 @@ var routes = [
     path: '/workbench',
     name: 'Workbench',
     component: Workbench,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/bussiness',
     name: 'Bussiness',
     component: Bussiness,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/message',
     name: 'Message',
     component: Message,
-    meta:{
-      value:1
+    meta: {
+      value: 1
     }
   },
   {
     path: '/personal',
     name: 'Personal',
     component: Personal,
-    meta:{
-      value:1
-    }
-  },
-  {
-    path: '/bluetoothsynch',
-    name: 'bluetoothSynch',
-    component: bluetoothSynch,
-    meta:{
-      value:1
-    }
-  },
-  {
-    path: '/clothingmanage',
-    name: 'clothingManage',
-    component: clothingManage,
-    meta:{
-      value:1
-    }
-  },
-  {
-    path: '/clothingnew',
-    name: 'clothingNew',
-    component: clothingNew,
-    meta:{
-      value:1
-    }
-  },
-  {
-    path: '/clothingsetting',
-    name: 'clothingSetting',
-    component: clothingSetting,
     meta:{
       value:1
     }
@@ -143,14 +115,6 @@ var routes = [
     component:Videopatrol,
     meta:{
       value:2
-    }
-  },
-  {
-    path: '/personal',
-    name: 'Personal',
-    component: Personal,
-    meta:{
-      value:1
     }
   },
   {
@@ -223,20 +187,93 @@ var routes = [
     }
   },
   {
-    path: '/criminalEducation',
-    name: 'criminalEducation',
-    component: CriminalEducation,
-    meta:{
-      value:4
-    }
-  },
-
-  {
     path: '/penologicalManage',
     name: 'penologicalManage',
     component: PenologicalManage,
     meta:{
       value:4
+    }
+  },
+  {
+    path: '/bluetoothsynch',
+    name: 'bluetoothSynch',
+    component: bluetoothSynch,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingmanage',
+    name: 'clothingManage',
+    component: clothingManage,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingnew',
+    name: 'clothingNew',
+    component: clothingNew,
+    meta: {
+      value: 1
+    }
+  },
+  {
+    path: '/clothingsetting',
+    name: 'clothingSetting',
+    component: clothingSetting,
+    meta: {
+      value: 1
+    }
+  },
+
+
+  {
+    path: '/rollcallmanage',
+    name: 'rollCallManage',
+    component: rollCallManage,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/newrollcall',
+    name: 'newRollCall',
+    component: newRollCall,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/datasummary',
+    name: 'dataSummary',
+    component: dataSummary,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/graphicsummary',
+    name: 'graphicSummary',
+    component: graphicSummary,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/medicinemanage',
+    name: 'medicineManage',
+    component: medicineManage,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/medicinemanageNew',
+    name: 'medicineManageNew',
+    component: medicineManageNew,
+    meta: {
+      value: 2
     }
   },
   {
@@ -255,70 +292,6 @@ var routes = [
       value:1
     }
   },
-
-
-
-
-  /*{
-    path: '/migrants',
-    redirect: 'migrants_mine_page',
-    name: 'Migrants',
-    component: Migrants,
-    children: [
-      {
-        path: '/migrants_mine_page',
-        component: MigrantsMinePage
-      },
-      {
-        path: '/migrants_audit_page',
-        component: MigrantsAuditPage
-      },
-      {
-        path: '/migrants_done_page',
-        component: MigrantsDonePage
-      }
-    ]
-  },
-  {
-    path: '/migrants_item',
-    name: 'MigrantsItem',
-    component: MigrantsItem
-  },
-  {
-    path: '/migrants_info/:id',
-    name: 'MigrantsInfo',
-    component: MigrantsInfo
-  },
-  {
-    path: '/migrants_audit/:id',
-    name: 'MigrantsAudit',
-    component: MigrantsAudit
-  },
-  {
-    path: '/person',
-    name: 'Person',
-    component: Person
-  },
-  {
-    path: '/area/:type',
-    name: 'Area',
-    component: Area
-  },
-  {
-    path: '/criminalQuery',
-    name: 'CriminalQuery',
-    component: CriminalQuery
-  },
-  {
-    path: '/prison',
-    name: 'prison',
-    component: Prison
-  },
-  {
-    path: '/prisonDetail',
-    name: 'PrisonDetail',
-    component: PrisonDetail
-  }*/
 ];
 
 Vue.use(Router);

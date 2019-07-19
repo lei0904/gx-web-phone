@@ -48,5 +48,8 @@ export default {
   .mint-header{
     background-color: #136dc5;
   }
+  .mint-header-title{
+    overflow: visible;
+  }
 }
 </style>
