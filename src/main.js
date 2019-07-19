@@ -23,6 +23,7 @@ import Ces from './components/ces/ces.js'
 import Config from './config.js'
 Ces.Config = Ces.Utils.extend(Ces.Config, Config);
 Vue.$ces = Vue.prototype.$ces = Ces;
+Vue.prototype.$mint = Mint;
 
 import VueScroller from './components/vue-scroller/index.js'
 Vue.use(VueScroller)
@@ -34,9 +35,9 @@ Vue.use(Dragbtn)
 import store from './store/'
 
 // 路由列表
-import iView from 'iview';
+/*import iView from 'iview';
 import 'iview/dist/styles/iview.css';
-Vue.use(iView);
+Vue.use(iView);*/
 
 Ces.ready(function () {
   /* eslint-disable no-new */

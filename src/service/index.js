@@ -8,9 +8,12 @@ import * as FlowNode from './data/flow_node'
 import * as flow from './data/flow'
 import  videoPatrol from './data/videopatrol'
 
+
 /*广西demo*/
 import * as workbench from './data/workbenchList'
 import * as record from './data/criminalRecord'
+
+import * as dailyData from  './data/dailyData'
 
 
 /**
@@ -59,6 +62,11 @@ if (Vue.$ces.Config.service === 'static') {
   var criminalEducation= (params, loading) => setPromise(record.educationList, loading);
   var penologicalList= (params, loading) => setPromise(record.penologicalList, loading);
 
+  var dailyDataList= (params, loading) => setPromise(dailyData.dailyList, loading);
+  var dailycheckList= (params, loading) => setPromise(dailyData.checkList, loading);
+  var flowExamineList = (params, loading) => setPromise(dailyData.flowList, loading);
+  var dailyExamineList = (params, loading) => setPromise(dailyData.examineList, loading);
+
 
 
 
@@ -97,5 +105,9 @@ export {
   criminalInstructor,
   criminalTreatment,
   criminalEducation,
-  penologicalList
+  penologicalList,
+  dailyDataList,
+  dailycheckList,
+  flowExamineList,
+  dailyExamineList
 }

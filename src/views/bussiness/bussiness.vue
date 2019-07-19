@@ -6,7 +6,6 @@
     </router-link>
   </mt-header>
   <div class="content" :style="{height:contentH+'px'}">
-
     <div class="sudoku">
       <router-link :to="'/criminalRecord'" class="item">
         <i class="icon-item item-1"></i>
@@ -14,40 +13,42 @@
       </router-link>
 
       <router-link :to="'/videopatrol'"  class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-2"></i>
         <div class="item-text">视频巡查</div>
-      </router-link >
+      </router-link>
 
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-3"></i>
         <div class="item-text">应急处置</div>
       </div>
-      <div class="item">
-        <i class="icon-item item-1"></i>
+
+      <router-link :to="'/dailySupervision'"  class="item">
+        <i class="icon-item item-4"></i>
         <div class="item-text">日常监管</div>
-      </div>
+      </router-link>
+
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-5"></i>
         <div class="item-text">个别谈话管理</div>
       </div>
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-6"></i>
         <div class="item-text">工具收发管理</div>
       </div>
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-7"></i>
         <div class="item-text">服药管理</div>
       </div>
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-8"></i>
         <div class="item-text">点名管理</div>
       </div>
       <div class="item" @click="toPath('/clothingmanage')">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-9"></i>
         <div class="item-text">被服发放</div>
       </div>
       <div class="item" @click="toPath('/bluetoothsynch')">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-10"></i>
         <div class="item-text">蓝牙同步</div>
       </div>
     </div>
@@ -102,14 +103,61 @@
       color: #153894;
       .icon-item{
         display: block;
-        background: url("../../../static/img/menu_1_checked.png");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
         width: 110px;
         height: 110px;
         margin-left :55px;
         margin-top: 40px;
         margin-bottom: 10px;
+      }
+      .item-1{
+        background: url("../../../static/img/bmenu_1_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-2{
+        background: url("../../../static/img/bmenu_2_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-3{
+        background: url("../../../static/img/bmenu_3_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-4{
+        background: url("../../../static/img/bmenu_4_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-5{
+        background: url("../../../static/img/bmenu_5_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-6{
+        background: url("../../../static/img/bmenu_6_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-7{
+        background: url("../../../static/img/bmenu_7_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-8{
+        background: url("../../../static/img/bmenu_8_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-9{
+        background: url("../../../static/img/bmenu_9_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .item-10{
+        background: url("../../../static/img/bmenu_10_checked.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
       }
     }
     .item:active{
