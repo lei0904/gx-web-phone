@@ -2,8 +2,7 @@
   <div id="workbench">
     <div class="page-part">
       <mt-header fixed title="工作台">
-        <router-link to="/" slot="left">
-        </router-link>
+        <mt-button icon="back" slot="left" @click="$router.replace('/myapp')"></mt-button>
       </mt-header>
     </div>
     <div class="content">

@@ -1,35 +1,23 @@
 <template>
-  <div id="clothingManageNew">
-    <mt-header fixed title="新增被服发放">
-      <router-link to="/clothingmanage" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+  <div id="new">
+    <mt-header fixed title="新增谈话">
+      <mt-button icon="back" slot="left" @click="$router.back()"></mt-button>
     </mt-header>
     <div class="content">
-      <mt-cell title="选择发放人" is-link @click.native="sheetVisible.consigneeVisible = true"
+      <mt-cell title="选择谈话人" is-link @click.native="sheetVisible.consigneeVisible = true"
                :value="newData.consignee"></mt-cell>
-      <mt-actionsheet :actions="actions.consigneeActions" v-model="sheetVisible.consigneeVisible"></mt-actionsheet>
+      <mt-actionsheet v-if="!isDetail" :actions="actions.consigneeActions" v-model="sheetVisible.consigneeVisible"></mt-actionsheet>
 
-      <mt-cell title="选择仓库" is-link @click.native="sheetVisible.warehouseVisible = true"
+      <mt-cell title="选择谈话地点" is-link @click.native="sheetVisible.warehouseVisible = true"
                :value="newData.warehouse"></mt-cell>
-      <mt-actionsheet :actions="actions.warehouseActions" v-model="sheetVisible.warehouseVisible"></mt-actionsheet>
-
-      <mt-cell title="物品类别" is-link @click.native="sheetVisible.categoryVisible = true"
-               :value="newData.category"></mt-cell>
-      <mt-actionsheet :actions="actions.categoryActions" v-model="sheetVisible.categoryVisible"></mt-actionsheet>
-
-      <mt-cell title="物品子类" is-link @click.native="sheetVisible.subclassVisible = true"
-               :value="newData.subclass"></mt-cell>
-      <mt-actionsheet :actions="actions.subclassActions" v-model="sheetVisible.subclassVisible"></mt-actionsheet>
-
-      <mt-cell title="新犯/标准">
+      <mt-actionsheet v-if="!isDetail" :actions="actions.warehouseActions" v-model="sheetVisible.warehouseVisible"></mt-actionsheet>
+      <mt-cell v-if="isDetail" title="谈话时间" value="2019-7-17"></mt-cell>
+      <mt-cell title="是否重点对象">
         <mt-switch v-model="value"></mt-switch>
       </mt-cell>
-      <mt-cell title="发放数量" :value="value ? '2' : '1'"></mt-cell>
-
       <mt-cell title="民警指纹识别" >
-        <mt-button v-show="!fingerprintConfirm.fingerprint1" size="small" type="primary" @click.native="popupVisible.popupVisible1 = true">开始识别</mt-button>
-        <div v-show="fingerprintConfirm.fingerprint1">已确认指纹</div>
+        <mt-button v-show="!isDetail&&!fingerprintConfirm.fingerprint1" size="small" type="primary" @click.native="popupVisible.popupVisible1 = true">开始识别</mt-button>
+        <div v-show="isDetail||fingerprintConfirm.fingerprint1">已确认指纹</div>
       </mt-cell>
       <mt-popup v-model="popupVisible.popupVisible1" popup-transition="popup-fade" class="mint-popup" >
         <div class="fingerprint" @click="getFingerprint('fingerprint1','popupVisible1')">
@@ -39,8 +27,8 @@
       </mt-popup>
 
       <mt-cell title="罪犯指纹识别">
-        <mt-button v-show="!fingerprintConfirm.fingerprint2" size="small" type="primary" @click.native="popupVisible.popupVisible2 = true">开始识别</mt-button>
-        <div v-show="fingerprintConfirm.fingerprint2">已确认指纹</div>
+        <mt-button v-show="!isDetail&&!fingerprintConfirm.fingerprint2" size="small" type="primary" @click.native="popupVisible.popupVisible2 = true">开始识别</mt-button>
+        <div v-show="isDetail||fingerprintConfirm.fingerprint2">已确认指纹</div>
       </mt-cell>
       <mt-popup v-model="popupVisible.popupVisible2" popup-transition="popup-fade" class="mint-popup" >
         <div class="fingerprint" @click="getFingerprint('fingerprint2','popupVisible2')">
@@ -48,14 +36,16 @@
           <p>请按指纹</p>
         </div>
       </mt-popup>
-
-      <mt-button class="normal-button" size="large" type="primary">提交申请</mt-button>
+      <mt-cell title="录音" >
+        <mt-button  size="small" type="primary" @click.native="record">{{isDetail?'播放录音':'开始录音'}}</mt-button>
+      </mt-cell>
+      <mt-button v-if="!isDetail" class="normal-button" size="large" type="primary" @click.native="save">提交</mt-button>
     </div>
   </div>
 </template>
 
 <script>
-
+  import { Toast } from 'mint-ui';
   export default {
     data() {
       return {
@@ -73,8 +63,8 @@
           subclassActions: []
         },
         newData: {
-          consignee: '',
-          warehouse: '',
+          consignee: this.$route.query.consignee,
+          warehouse: this.$route.query.warehouse,
           category: '',
           subclass: ''
         },
@@ -85,10 +75,29 @@
         fingerprintConfirm:{
           fingerprint1:false,
           fingerprint2:false
-        }
+        },
+        isRecord:false,
+        isDetail:this.$route.query.detail,
+
       };
     },
     methods: {
+      record(e){
+        if(!this.isRecord){
+          e.target.innerHTML='结束录音';
+        }else {
+          e.target.innerHTML='开始录音'
+        }
+        this.isRecord=!this.isRecord;
+      },
+      save(){
+        Toast({
+          message: '保存成功',
+          position: 'middle',
+          duration: 2000
+        });
+        this.$router.back();
+      },
       changeConsignee(val){
         this.newData.consignee = val.name
       },
@@ -168,30 +177,38 @@
         this.newData.subclass = val.name
       },
       getFingerprint(val,id){
-          this.fingerprintConfirm[val] = true
-          this.popupVisible[id] = false
+        this.fingerprintConfirm[val] = true
+        this.popupVisible[id] = false
       }
     },
     mounted() {
       this.actions.consigneeActions = [
-          {
-            name: '张三',
-            method: this.changeConsignee
-          },
-          {
-            name: '李四',
-            method: this.changeConsignee
-          }
-        ];
+        {
+          name: '张三',
+          method: this.changeConsignee
+        },
+        {
+          name: '李四',
+          method: this.changeConsignee
+        }
+      ];
       this.actions.warehouseActions = [
         {
-          name: '仓库一',
+          name: '监舍',
           method: this.changeWarehouse
         },
         {
-          name: '仓库二',
+          name: '活动室',
           method: this.changeWarehouse
-        }
+        },
+        {
+          name: '操场',
+          method: this.changeWarehouse
+        },
+        {
+          name: '车间',
+          method: this.changeWarehouse
+        },
       ];
       this.actions.categoryActions = [
         {
@@ -205,7 +222,7 @@
 </script>
 
 <style lang="scss">
-  #clothingManageNew {
+  #new {
     background: #f0f0f4;
     min-height: 100vh;
     .mint-actionsheet-listitem{

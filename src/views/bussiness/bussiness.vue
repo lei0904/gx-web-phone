@@ -27,19 +27,20 @@
         <div class="item-text">日常监管</div>
       </router-link>
 
-      <div class="item">
+      <router-link :to="'/talkManage'" class="item">
         <i class="icon-item item-5"></i>
         <div class="item-text">个别谈话管理</div>
-      </div>
+      </router-link>
+
       <div class="item">
         <i class="icon-item item-6"></i>
         <div class="item-text">工具收发管理</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/medicinemanage')">
         <i class="icon-item item-7"></i>
         <div class="item-text">服药管理</div>
       </div>
-      <div class="item">
+      <div class="item" @click="toPath('/rollcallmanage')">
         <i class="icon-item item-8"></i>
         <div class="item-text">点名管理</div>
       </div>
