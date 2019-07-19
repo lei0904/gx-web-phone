@@ -6,7 +6,7 @@
       </router-link>
     </mt-header>
     <div class="content">
-      <mt-field  placeholder="请输入业务关键字" v-model="keyword"></mt-field>
+      <mt-search v-model="keyword"></mt-search>
 
       <div class="medicineManageList">
         <div class="item">
@@ -75,6 +75,9 @@
 <style lang="scss">
   .medicineManage {
     .content {
+      .mint-search{
+        height: auto;
+      }
       .mint-field{
       .mint-field-core{
         text-align: left;
