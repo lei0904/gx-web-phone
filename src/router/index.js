@@ -50,7 +50,7 @@ const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk'))
 
 const Videopatrol = r => require.ensure([], () => r(require('@/views/video_patrol/Videopatrol')), 'Videopatrol')
 
-
+//*蓝牙被服点名服药工具处置模块*//
 const bluetoothSynch = r => require.ensure([], () => r(require('@/views/bluetoothSynch/index')), 'bluetoothSynch') //蓝牙同步
 
 const clothingManage = r => require.ensure([], () => r(require('@/views/clothingManage/index')), 'clothingManage') //被服发放
@@ -64,6 +64,18 @@ const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCall
 
 const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
 const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
+
+const toolsManage = r => require.ensure([], () => r(require('@/views/toolsManage/index')), 'toolsManage') //工具发放管理
+const inWarehouse = r => require.ensure([], () => r(require('@/views/toolsManage/inWarehouse')), 'inWarehouse') //出库
+const outofWarehouse = r => require.ensure([], () => r(require('@/views/toolsManage/outofWarehouse')), 'outofWarehouse') //入库
+const toolsManageHistory = r => require.ensure([], () => r(require('@/views/toolsManage/history')), 'toolsManageHistory') //历史收发记录
+const inWarehouseQuery = r => require.ensure([], () => r(require('@/views/toolsManage/inWarehouseQuery')), 'inWarehouseQuery') //库存查询
+const outofWarehouseQuery = r => require.ensure([], () => r(require('@/views/toolsManage/outofWarehouseQuery')), 'outofWarehouseQuery') //库外查询
+
+const emergency = r => require.ensure([], () => r(require('@/views/emergency/index')), 'emergency') //应急处置
+const emergencyFollowUp = r => require.ensure([], () => r(require('@/views/emergency/followUp')), 'emergencyFollowUp') //处置跟踪
+const emergencyNew = r => require.ensure([], () => r(require('@/views/emergency/new')), 'emergencyNew') //事件添加
+//*蓝牙被服点名服药工具处置模块END*//
 
 
 
@@ -215,7 +227,7 @@ var routes = [
     name: 'bluetoothSynch',
     component: bluetoothSynch,
     meta: {
-      value: 1
+      value: 2
     }
   },
   {
@@ -223,7 +235,7 @@ var routes = [
     name: 'clothingManage',
     component: clothingManage,
     meta: {
-      value: 1
+      value: 2
     }
   },
   {
@@ -231,7 +243,7 @@ var routes = [
     name: 'clothingNew',
     component: clothingNew,
     meta: {
-      value: 1
+      value: 3
     }
   },
   {
@@ -239,11 +251,9 @@ var routes = [
     name: 'clothingSetting',
     component: clothingSetting,
     meta: {
-      value: 1
+      value: 3
     }
   },
-
-
   {
     path: '/rollcallmanage',
     name: 'rollCallManage',
@@ -257,7 +267,7 @@ var routes = [
     name: 'newRollCall',
     component: newRollCall,
     meta: {
-      value: 2
+      value: 3
     }
   },
   {
@@ -265,7 +275,7 @@ var routes = [
     name: 'dataSummary',
     component: dataSummary,
     meta: {
-      value: 2
+      value: 3
     }
   },
   {
@@ -273,7 +283,7 @@ var routes = [
     name: 'graphicSummary',
     component: graphicSummary,
     meta: {
-      value: 2
+      value: 3
     }
   },
   {
@@ -289,7 +299,79 @@ var routes = [
     name: 'medicineManageNew',
     component: medicineManageNew,
     meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/toolsmanage',
+    name: 'toolsManage',
+    component: toolsManage,
+    meta: {
       value: 2
+    }
+  },
+  {
+    path: '/inwarehouse',
+    name: 'inWarehouse',
+    component: inWarehouse,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/outofwarehouse',
+    name: 'outofWarehouse',
+    component: outofWarehouse,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/toolsmanagehistory',
+    name: 'toolsManageHistory',
+    component: toolsManageHistory,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/inwarehousequery',
+    name: 'inWarehouseQuery',
+    component: inWarehouseQuery,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/outofwarehousequery',
+    name: 'outofWarehouseQuery',
+    component: outofWarehouseQuery,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/emergency',
+    name: 'emergency',
+    component: emergency,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/emergencyfollowup',
+    name: 'emergencyFollowUp',
+    component: emergencyFollowUp,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/emergencynew',
+    name: 'emergencyNew',
+    component: emergencyNew,
+    meta: {
+      value: 4
     }
   }
 

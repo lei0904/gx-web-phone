@@ -19,7 +19,7 @@
       </router-link >
 
       <div class="item">
-        <i class="icon-item item-1"></i>
+        <i class="icon-item item-3" @click="toPath('/emergency')"></i>
         <div class="item-text">应急处置</div>
       </div>
       <div class="item">
@@ -31,7 +31,7 @@
         <div class="item-text">个别谈话管理</div>
       </router-link>
 
-      <div class="item">
+      <div class="item" @click="toPath('/toolsManage')">
         <i class="icon-item item-1"></i>
         <div class="item-text">工具收发管理</div>
       </div>
