@@ -61,13 +61,17 @@ const clothingSetting = r => require.ensure([], () => r(require('@/views/clothin
 const talkManage = r => require.ensure([], () => r(require('@/views/talk/index')), 'talkManage') //个别谈话
 const talkRecord = r => require.ensure([], () => r(require('@/views/talk/talkRecord')), 'talkRecord') //谈话记录
 const newTalk = r => require.ensure([], () => r(require('@/views/talk/newTalk')), 'newTalk') //新增谈话
+const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')), 'myapp') //我的应用
+const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
+
+
 
 
 
 var routes = [
   {
     path: '',
-    redirect: '/workbench'
+    redirect: '/myapp'
   },
   {
     path: '/workbench',
@@ -233,6 +237,22 @@ var routes = [
     component: PenologicalManage,
     meta:{
       value:4
+    }
+  },
+  {
+    path: '/myapp',
+    name: 'myapp',
+    component: myapp,
+    meta:{
+      value:1
+    }
+  },
+  {
+    path: '/appcenter',
+    name: 'appcenter',
+    component: appcenter,
+    meta:{
+      value:1
     }
   },
 
