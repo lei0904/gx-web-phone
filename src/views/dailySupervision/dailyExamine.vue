@@ -1,7 +1,7 @@
 <template>
   <div class="daily-examine">
     <mt-header fixed title="日常检查">
-      <router-link to="/bussiness" slot="left">
+      <router-link to="/dailySupervision" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>

@@ -82,7 +82,7 @@
     }
     .checked{
       .menu_1{
-        background: url(../../../static/img/bmenu_1_checked.png) no-repeat center / 100% 100%;
+        background: url(../../../static/img/menu_1_checked.png) no-repeat center / 100% 100%;
       }
       .menu_2{
         background: url(../../../static/img/menu_2_checked.png) no-repeat center / 100% 100%;

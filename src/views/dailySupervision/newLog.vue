@@ -137,42 +137,15 @@
         ],
         normArr:[
           {
-            value:'生活卫生规范',
+            value:'检查巡视',
             code:'3'
-          },
-          {
-            value:'文明礼貌规范',
-            code:'4'
-          },
-          {
-            value:'劳动规范',
-            code:'5'
-          },
+          }
         ],
         clauseArr:[
           {
-            value:'第一条第1款',
+            value:'其他检查巡视',
             code:'1'
-          },
-          {
-            value:'第一条第2款',
-            code:'1'
-          },
-          {
-            value:'第一条第3款',
-            code:'1'
-          },
-          {
-            value:'第一条第4款',
-            code:'1'
-          },
-          {
-            value:'第一条第5款',
-            code:'1'
-          },
-
-
-        ]
+          }]
 
       }
     },
