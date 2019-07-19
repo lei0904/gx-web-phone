@@ -1,7 +1,6 @@
 <template>
   <div id="myapp" :style="{height:contentHeight+'px',background:`url('../../../static/img/appcenter-background.png')`,'background-size':'100%'}">
     <div class="content">
-
       <div class="sudoku">
         <router-link :to="'/workbench'" class="item">
           <i class="icon-item item-1 zhifa"></i>
