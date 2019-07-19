@@ -28,14 +28,6 @@ const clothingNew = r => require.ensure([], () => r(require('@/views/clothingMan
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
 
-const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
-const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
-const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
-const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
-
-const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
-const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
-
 const toolsManage = r => require.ensure([], () => r(require('@/views/toolsManage/index')), 'toolsManage') //工具发放管理
 const inWarehouse = r => require.ensure([], () => r(require('@/views/toolsManage/inWarehouse')), 'inWarehouse') //出库
 const outofWarehouse = r => require.ensure([], () => r(require('@/views/toolsManage/outofWarehouse')), 'outofWarehouse') //入库
