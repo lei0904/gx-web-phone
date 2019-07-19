@@ -94,7 +94,8 @@
         background: url(../../../static/img/menu_4_checked.png) no-repeat center / 100% 100%;
       }
       p{
-        color: #136dc5;
+        /*color: #136dc5;*/
+        color:#1d6db4;
       }
     }
    /* .menu_item:nth-child(1){
