@@ -94,8 +94,7 @@
       .apptitle{
         margin-top: 20px;
         margin-left: 20px;
-        font: bold 30px Georgia,serif;
-        color:white;
+        color:#fff;
       }
       .sudoku{
         display: flex;
@@ -116,14 +115,17 @@
           color: #153894;
           .icon-item{
             display: block;
-            background: url("../../../static/img/menu_1_checked.png");
+            background-image: url("../../../static/img/menu_1_checked.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
+            background-position: center center;
             width: 60px;
             height: 60px;
-            margin-left :20px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin:20px  auto  10px auto;
+          }
+          .item-text{
+            font-size: 12px;/*no*/
+            font-weight: 200;
           }
         }
       }
