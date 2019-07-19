@@ -52,6 +52,9 @@ const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCall
 const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
 const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
+/*移动政务*/
+const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex') //应用中心
+
 
 
 var routes = [
@@ -367,6 +370,14 @@ var routes = [
     component: appcenter,
     meta:{
       value:1
+    }
+  },
+  {
+    path: '/governmentIndex',
+    name: 'GovernmentIndex',
+    component: GovernmentIndex,
+    meta:{
+      value:2
     }
   },
 ];

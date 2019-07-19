@@ -7,10 +7,10 @@
           <div class="item-text">移动执法</div>
         </router-link>
 
-        <div class="item">
+        <router-link :to="'/governmentIndex'" class="item">
           <i class="icon-item item-1 zhengwu"></i>
           <div class="item-text">移动政务</div>
-        </div>
+        </router-link>
       </div>
     </div>
     <v-appmenu :checked="1"></v-appmenu>
