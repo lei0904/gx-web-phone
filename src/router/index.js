@@ -27,22 +27,6 @@ const clothingManage = r => require.ensure([], () => r(require('@/views/clothing
 const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
-const dailySupervision = r => require.ensure([], () => r(require('@/views/dailySupervision/index')), 'dailySupervision') //日常监管
-const dailyCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/check')), 'dailyCheck') //日考评登记
-const dailyNewCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/newCheck')), 'dailyNewCheck') //新建考评登记
-const FlowExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/flowExamine')), 'FlowExamine')
-const LogExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/logList')), 'LogExamine')
-const NewLog = r => require.ensure([], () => r(require('@/views/dailySupervision/newLog')), 'NewLog')
-const DailyExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/DailyExamine')), 'DailyExamine')
-const NewDaily = r => require.ensure([], () => r(require('@/views/dailySupervision/newDaily')), 'NewDaily')
-
-
-
-
-
-const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')), 'myapp') //我的应用
-const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
-
 
 const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
 const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
@@ -63,6 +47,21 @@ const emergency = r => require.ensure([], () => r(require('@/views/emergency/ind
 const emergencyFollowUp = r => require.ensure([], () => r(require('@/views/emergency/followUp')), 'emergencyFollowUp') //处置跟踪
 const emergencyNew = r => require.ensure([], () => r(require('@/views/emergency/new')), 'emergencyNew') //事件添加
 //*蓝牙被服点名服药工具处置模块END*//
+
+
+const dailySupervision = r => require.ensure([], () => r(require('@/views/dailySupervision/index')), 'dailySupervision') //日常监管
+const dailyCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/check')), 'dailyCheck') //日考评登记
+const dailyNewCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/newCheck')), 'dailyNewCheck') //新建考评登记
+const FlowExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/flowExamine')), 'FlowExamine')
+const LogExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/logList')), 'LogExamine')
+const NewLog = r => require.ensure([], () => r(require('@/views/dailySupervision/newLog')), 'NewLog')
+const DailyExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/DailyExamine')), 'DailyExamine')
+const NewDaily = r => require.ensure([], () => r(require('@/views/dailySupervision/newDaily')), 'NewDaily')
+
+
+const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')), 'myapp') //我的应用
+const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
+
 
 
 
@@ -103,38 +102,7 @@ var routes = [
       value:1
     }
   },
-  {
-    path: '/bluetoothsynch',
-    name: 'bluetoothSynch',
-    component: bluetoothSynch,
-    meta:{
-      value:2
-    }
-  },
-  {
-    path: '/clothingmanage',
-    name: 'clothingManage',
-    component: clothingManage,
-    meta:{
-      value:2
-    }
-  },
-  {
-    path: '/clothingnew',
-    name: 'clothingNew',
-    component: clothingNew,
-    meta:{
-      value:2
-    }
-  },
-  {
-    path: '/clothingsetting',
-    name: 'clothingSetting',
-    component: clothingSetting,
-    meta:{
-      value:3
-    }
-  },
+
   {
     path:'/videopatrol',
     name:'Videopatrol',
