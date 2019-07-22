@@ -14,85 +14,105 @@
         </mt-swipe>
       </div>
       <div class="module">
-        <div class="module-item">
+        <router-link  to='' class="module-item">
           <i class="icon icon1"></i>
           <p>党建收费</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link  to='' class="module-item">
+          <i class="icon icon2"></i>
           <p>思想汇报</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon3"></i>
           <p>活动报名</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon4"></i>
           <p>在线考试</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon5"></i>
           <p>任务管理</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon6"></i>
           <p>三科一会</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon7"></i>
           <p>专题教育</p>
-        </div>
-        <div class="module-item">
-          <i class="icon icon1"></i>
+        </router-link>
+        <router-link to='' class="module-item">
+          <i class="icon icon8"></i>
           <p>反腐倡廉</p>
-        </div>
+        </router-link>
       </div>
-      <div class="scroller-wrapper">
-        <scroller :on-refresh="refresh"
-                  :on-infinite="infinite"
-                  ref="scroller">
-          <div class="task-title">
-            <div class="line left-line"></div>
-            <div class="title">我的待办</div>
-            <div class="line right-line"></div>
-          </div>
-          <div v-for="(item, index) in list">
-            <div v-if="item.type == 1 || item.type == 2" class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-              <div v-if="item.type == 1">
-                <div class="info info-title"><label class="info-lable">点名：</label><label>{{item.name}}</label></div>
-                <div class="info"><label class="info-lable">点名时间：</label><span>{{item.time}}</span></div>
-                <div class="info"><label class="info-lable">预计点名人数：</label><span>{{item.num}} </span></div>
-              </div>
-              <div v-if="item.type == 2">
-                <div class="info  info-title"><label class="info-lable">值班：</label><label>{{item.name}}</label></div>
-                <div class="info"><label class="info-lable">值班时间：</label><span>{{item.time}}</span></div>
-              </div>
-              <div class="start-btn" @click="onItemClick(index, item)">开始</div>
-              <div class="clear"></div>
+      <div class="scroller-content">
+        <div class="tips">
+          <p class="tips-item">
+            党建要闻
+          </p>
+          <p class="tips-item">
+            通知公告
+          </p>
+          <p class="tips-item">
+            党内公示
+          </p>
+          <p class="tips-item">
+            政策法规
+          </p>
+          <p class="tips-item">
+            党员学习
+          </p>
+        </div>
+        <div class="scroller-wrapper">
+          <scroller :on-refresh="refresh"
+                    :on-infinite="infinite"
+                    ref="scroller">
+            <div class="task-title">
+              <div class="line left-line"></div>
+              <div class="title">我的待办</div>
+              <div class="line right-line"></div>
             </div>
-          </div>
-          <div class="task-title">
-            <div class="line left-line"></div>
-            <div class="title">业务提醒</div>
-            <div class="line right-line"></div>
-          </div>
-          <div v-for="(item, index) in list">
-            <div  v-if="item.type == 3 || item.type == 4"
-                  class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-              <div class="info info-title"><label class="info-lable">{{item.remindName}}：</label><label>{{item.criminalName}}</label></div>
-              <div v-if="item.type == 3">
-                <div class="info"><label class="info-lable">谈话时间：</label><span>{{item.time}}</span></div>
+            <div v-for="(item, index) in list">
+              <div v-if="item.type == 1 || item.type == 2" class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
+                <div v-if="item.type == 1">
+                  <div class="info info-title"><label class="info-lable">点名：</label><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">点名时间：</label><span>{{item.time}}</span></div>
+                  <div class="info"><label class="info-lable">预计点名人数：</label><span>{{item.num}} </span></div>
+                </div>
+                <div v-if="item.type == 2">
+                  <div class="info  info-title"><label class="info-lable">值班：</label><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">值班时间：</label><span>{{item.time}}</span></div>
+                </div>
+                <div class="start-btn" @click="onItemClick(index, item)">开始</div>
+                <div class="clear"></div>
               </div>
-              <div v-if="item.type == 4">
-                <div class="info  info-title"><label>{{item.name}}</label></div>
-                <div class="info"><label class="info-lable">提交时间：</label><span>{{item.time}}</span></div>
-              </div>
+            </div>
+            <div class="task-title">
+              <div class="line left-line"></div>
+              <div class="title">业务提醒</div>
+              <div class="line right-line"></div>
+            </div>
+            <div v-for="(item, index) in list">
+              <div  v-if="item.type == 3 || item.type == 4"
+                    class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
+                <div class="info info-title"><label class="info-lable">{{item.remindName}}：</label><label>{{item.criminalName}}</label></div>
+                <div v-if="item.type == 3">
+                  <div class="info"><label class="info-lable">谈话时间：</label><span>{{item.time}}</span></div>
+                </div>
+                <div v-if="item.type == 4">
+                  <div class="info  info-title"><label>{{item.name}}</label></div>
+                  <div class="info"><label class="info-lable">提交时间：</label><span>{{item.time}}</span></div>
+                </div>
 
-              <div class="start-btn" @click="onItemClick(index, item)">查看</div>
-              <div class="clear"></div>
+                <div class="start-btn" @click="onItemClick(index, item)">查看</div>
+                <div class="clear"></div>
+              </div>
             </div>
-          </div>
-        </scroller>
+          </scroller>
+        </div>
+
       </div>
     </div>
     <v-menu :checked="1"></v-menu>
@@ -223,11 +243,88 @@
     .content{
       background: #edf1f4;
       .banner{
-        height: 400px;
+        height: 300px;
       }
       .module{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        background-color: #fff;
+        margin: 10px 20px;
+        border-radius: 10px;
         .module-item{
+          flex: 1;
+          width: 170px;
+          height: 150px;
+          padding: 10px;
+          box-sizing: border-box;
+          p{
+            color: #000;
+            width: 170px;
+            height: 60px;
+            padding-top: 10px;
+            font-weight: 500;
+            text-align: center;
+          }
+          .icon{
+            display: block;
+            width:60px;
+            height: 60px;
+            margin: 10px auto;
+          }
+          .icon1{
+            background-image: url("../../../static/img/icon-zw-01.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
 
+          .icon2{
+            background-image: url("../../../static/img/icon-zw-02.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+
+          .icon3{
+            background-image: url("../../../static/img/icon-zw-03.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          .icon4{
+            background-image: url("../../../static/img/icon-zw-04.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          .icon5{
+            background-image: url("../../../static/img/icon-zw-05.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          .icon6{
+            background-image: url("../../../static/img/icon-zw-06.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          .icon7{
+            background-image: url("../../../static/img/icon-zw-07.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+          .icon8{
+            background-image: url("../../../static/img/icon-zw-08.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .module-item:active{
+          background-color: rgba(0,0,0,0.13);
         }
       }
       .task-title{
@@ -285,6 +382,25 @@
         }
         .clear{
           clear: both;
+        }
+      }
+      .scroller-content{
+        .tips{
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          margin: 20px;
+          .tips-item{
+            width: 120px;
+            padding: 10px 10px;
+            text-align: center;
+            background-color: #fff;
+            margin-right: 10px;
+            color: #136dc5;
+          }
+          .tips-item:active{
+            background-color: rgba(0,0,0,.11);
+          }
         }
       }
     }
