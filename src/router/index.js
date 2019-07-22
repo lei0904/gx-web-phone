@@ -40,6 +40,7 @@ const emergencyFollowUp = r => require.ensure([], () => r(require('@/views/emerg
 const emergencyNew = r => require.ensure([], () => r(require('@/views/emergency/new')), 'emergencyNew') //事件添加
 //*蓝牙被服点名服药工具处置模块END*//
 
+
 const dailySupervision = r => require.ensure([], () => r(require('@/views/dailySupervision/index')), 'dailySupervision') //日常监管
 const dailyCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/check')), 'dailyCheck') //日考评登记
 const dailyNewCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/newCheck')), 'dailyNewCheck') //新建考评登记
@@ -65,6 +66,19 @@ const medicineManageNew = r => require.ensure([], () => r(require('@/views/medic
 /*移动政务*/
 const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex'); //应用中心
 const exams = r => require.ensure([], () => r(require('@/views/governmentExams/index')), 'exams'); //考试
+
+
+/*shenjie*/
+const partyFee = r => require.ensure([], () => r(require('@/views/partyFee/index')), 'partyFee') //党建收费
+const ideaReport = r => require.ensure([], () => r(require('@/views/ideaReport/index')), 'ideaReport') //思想汇报
+const ideaReportNew = r => require.ensure([], () => r(require('@/views/ideaReport/new')), 'ideaReportNew') //新建思想汇报
+const activityEnroll = r => require.ensure([], () => r(require('@/views/activityEnroll/index')), 'activityEnroll') //活动报名
+const activityEnrollDetail = r => require.ensure([], () => r(require('@/views/activityEnroll/detail')), 'activityEnrollDetail') //活动参与
+const missionManage = r => require.ensure([], () => r(require('@/views/missionManage/index')), 'missionManage') //任务管理
+const missionManageDetail = r => require.ensure([], () => r(require('@/views/missionManage/detail')), 'missionManageDetail') //任务详情
+const threeOne = r => require.ensure([], () => r(require('@/views/threeOne/index')), 'threeOne') //三会一课
+const specialSubject = r => require.ensure([], () => r(require('@/views/specialSubject/index')), 'specialSubject') //专题教育
+const combatCorruption = r => require.ensure([], () => r(require('@/views/combatCorruption/index')), 'combatCorruption') //反腐倡廉
 
 var routes = [
   {
@@ -437,7 +451,87 @@ var routes = [
     meta:{
       value:3
     }
-  }
+  },
+  {
+    path: '/partyFee',
+    name: 'partyFee',
+    component: partyFee,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/ideaReport',
+    name: 'ideaReport',
+    component: ideaReport,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/ideaReportNew',
+    name: 'ideaReportNew',
+    component: ideaReportNew,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/activityEnroll',
+    name: 'activityEnroll',
+    component: activityEnroll,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/activityEnrollDetail',
+    name: 'activityEnrollDetail',
+    component: activityEnrollDetail,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/missionManage',
+    name: 'missionManage',
+    component: missionManage,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/missionManageDetail',
+    name: 'missionManageDetail',
+    component: missionManageDetail,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/threeOne',
+    name: 'threeOne',
+    component: threeOne,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/specialSubject',
+    name: 'specialSubject',
+    component: specialSubject,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/combatCorruption',
+    name: 'combatCorruption',
+    component: combatCorruption,
+    meta:{
+      value:5
+    }
+  },
 ];
 
 Vue.use(Router);

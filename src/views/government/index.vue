@@ -14,15 +14,15 @@
         </mt-swipe>
       </div>
       <div class="module">
-        <router-link  to='' class="module-item">
+        <router-link  to='/partyFee' class="module-item">
           <i class="icon icon1"></i>
           <p>党建收费</p>
         </router-link>
-        <router-link  to='' class="module-item">
+        <router-link  to='/ideaReport' class="module-item">
           <i class="icon icon2"></i>
           <p>思想汇报</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to='/activityEnroll' class="module-item">
           <i class="icon icon3"></i>
           <p>活动报名</p>
         </router-link>
@@ -30,19 +30,19 @@
           <i class="icon icon4"></i>
           <p>在线考试</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to='/missionManage' class="module-item">
           <i class="icon icon5"></i>
           <p>任务管理</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to='/threeOne' class="module-item">
           <i class="icon icon6"></i>
           <p>三科一会</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to='/specialSubject' class="module-item">
           <i class="icon icon7"></i>
           <p>专题教育</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to='/combatCorruption' class="module-item">
           <i class="icon icon8"></i>
           <p>反腐倡廉</p>
         </router-link>
