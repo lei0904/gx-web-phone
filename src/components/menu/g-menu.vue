@@ -8,7 +8,7 @@
       <i class="menu_2"></i>
       <p>互动</p>
     </div>
-    <div class="menu_item" :class="checked ==3 ? 'checked' : ''" @click="toPath('/message')">
+    <div class="menu_item" :class="checked ==3 ? 'checked' : ''" @click="toPath('/superviseIndex')">
       <i class="menu_3"></i>
       <p>督查督办</p>
     </div>

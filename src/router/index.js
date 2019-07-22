@@ -27,6 +27,14 @@ const clothingManage = r => require.ensure([], () => r(require('@/views/clothing
 const clothingNew = r => require.ensure([], () => r(require('@/views/clothingManage/new')), 'clothingManage') //新增被服发放
 const clothingSetting = r => require.ensure([], () => r(require('@/views/clothingManage/setting')), 'clothingManage') //被服配置
 
+const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
+const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
+const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
+const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
+
+const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
+const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
+
 
 const toolsManage = r => require.ensure([], () => r(require('@/views/toolsManage/index')), 'toolsManage') //工具发放管理
 const inWarehouse = r => require.ensure([], () => r(require('@/views/toolsManage/inWarehouse')), 'inWarehouse') //出库
@@ -38,6 +46,13 @@ const outofWarehouseQuery = r => require.ensure([], () => r(require('@/views/too
 const emergency = r => require.ensure([], () => r(require('@/views/emergency/index')), 'emergency') //应急处置
 const emergencyFollowUp = r => require.ensure([], () => r(require('@/views/emergency/followUp')), 'emergencyFollowUp') //处置跟踪
 const emergencyNew = r => require.ensure([], () => r(require('@/views/emergency/new')), 'emergencyNew') //事件添加
+
+
+const superviseIndex = r => require.ensure([], () => r(require('@/views/supervise/index')), 'superviseIndex') //督查督办首页
+const supervise = r => require.ensure([], () => r(require('@/views/supervise/supervise')), 'supervise') //督查督办
+const superviseDetail = r => require.ensure([], () => r(require('@/views/supervise/superviseDetail')), 'superviseDetail') //督查督办详情
+const officialDocument = r => require.ensure([], () => r(require('@/views/supervise/officialDocument')), 'officialDocument') //公文
+const officialDocumentDetail = r => require.ensure([], () => r(require('@/views/supervise/officialDocumentDetail')), 'officialDocumentDetail') //公文详情
 //*蓝牙被服点名服药工具处置模块END*//
 
 
@@ -55,13 +70,7 @@ const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')
 const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
 
 
-const rollCallManage = r => require.ensure([], () => r(require('@/views/rollCallManage/index')), 'rollCallManage') //点名管理
-const newRollCall = r => require.ensure([], () => r(require('@/views/rollCallManage/new')), 'newRollCall') //新建点名
-const dataSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/dataSummary')), 'dataSummary') //点名数据查询
-const graphicSummary = r => require.ensure([], () => r(require('@/views/rollCallManage/graphicSummary')), 'graphicSummary') //点名台账查询
 
-const medicineManage = r => require.ensure([], () => r(require('@/views/medicineManage/index')), 'medicineManage') //服药管理
-const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
 /*移动政务*/
 const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex') //应用中心
@@ -404,6 +413,46 @@ var routes = [
     path: '/emergencynew',
     name: 'emergencyNew',
     component: emergencyNew,
+    meta: {
+      value: 4
+    }
+  },
+  {
+    path: '/superviseIndex',
+    name: 'superviseIndex',
+    component: superviseIndex,
+    meta: {
+      value: 2
+    }
+  },
+  {
+    path: '/supervise',
+    name: 'supervise',
+    component: supervise,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/superviseDetail',
+    name: 'superviseDetail',
+    component: superviseDetail,
+    meta: {
+      value: 4
+    }
+  },
+  {
+    path: '/officialDocument',
+    name: 'officialDocument',
+    component: officialDocument,
+    meta: {
+      value: 3
+    }
+  },
+  {
+    path: '/officialDocumentDetail',
+    name: 'officialDocumentDetail',
+    component: officialDocumentDetail,
     meta: {
       value: 4
     }
