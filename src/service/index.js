@@ -15,6 +15,8 @@ import * as record from './data/criminalRecord'
 
 import * as dailyData from  './data/dailyData'
 
+ import * as zwData from './data/zwData'
+
 
 /**
  * 创建临时数据
@@ -67,7 +69,9 @@ if (Vue.$ces.Config.service === 'static') {
   var flowExamineList = (params, loading) => setPromise(dailyData.flowList, loading);
   var dailyExamineList = (params, loading) => setPromise(dailyData.examineList, loading);
 
+  /*移动政务数据*/
 
+  var zwIndexData =  (params, loading) => setPromise(zwData.indexListData, loading);
 
 
 } else {
@@ -109,5 +113,6 @@ export {
   dailyDataList,
   dailycheckList,
   flowExamineList,
-  dailyExamineList
+  dailyExamineList,
+  zwIndexData
 }

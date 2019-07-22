@@ -8,9 +8,9 @@
     <div class="content">
       <div class="banner">
         <mt-swipe :auto="4000">
-          <mt-swipe-item>1</mt-swipe-item>
-          <mt-swipe-item>2</mt-swipe-item>
-          <mt-swipe-item>3</mt-swipe-item>
+          <mt-swipe-item class="banner-item" v-for="item in bannerArr">
+            <img :src='"../../../static/img/"+ item' alt="">
+          </mt-swipe-item>
         </mt-swipe>
       </div>
       <div class="module">
@@ -48,20 +48,20 @@
         </router-link>
       </div>
       <div class="scroller-content">
-        <div class="tips">
-          <p class="tips-item">
+        <div class="tips" >
+          <p class="tips-item" @click="tipsClick(1)">
             党建要闻
           </p>
-          <p class="tips-item">
+          <p class="tips-item" @click="tipsClick(2)">
             通知公告
           </p>
-          <p class="tips-item">
+          <p class="tips-item" @click="tipsClick(3)">
             党内公示
           </p>
-          <p class="tips-item">
+          <p class="tips-item" @click="tipsClick(4)">
             政策法规
           </p>
-          <p class="tips-item">
+          <p class="tips-item" @click="tipsClick(5)">
             党员学习
           </p>
         </div>
@@ -69,46 +69,46 @@
           <scroller :on-refresh="refresh"
                     :on-infinite="infinite"
                     ref="scroller">
-            <div class="task-title">
-              <div class="line left-line"></div>
-              <div class="title">我的待办</div>
-              <div class="line right-line"></div>
-            </div>
-            <div v-for="(item, index) in list">
-              <div v-if="item.type == 1 || item.type == 2" class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-                <div v-if="item.type == 1">
-                  <div class="info info-title"><label class="info-lable">点名：</label><label>{{item.name}}</label></div>
-                  <div class="info"><label class="info-lable">点名时间：</label><span>{{item.time}}</span></div>
-                  <div class="info"><label class="info-lable">预计点名人数：</label><span>{{item.num}} </span></div>
+            <div   v-for="(item, index) in list">
+              <div class="info-list" v-if="item.type == active">
+                <div class="img-avatar">
+                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
                 </div>
-                <div v-if="item.type == 2">
-                  <div class="info  info-title"><label class="info-lable">值班：</label><label>{{item.name}}</label></div>
-                  <div class="info"><label class="info-lable">值班时间：</label><span>{{item.time}}</span></div>
+                <div class="info-content">
+                  <div class="title">
+                    {{item.title}}
+                  </div>
+                  <div class="info  info-title" v-if="item.type == 1">分类:党建要闻</div>
+                  <div class="info  info-title" v-if="item.type == 2">分类:通知公告</div>
+                  <div class="info  info-title" v-if="item.type == 3">分类:党内公示</div>
+                  <div class="info  info-title" v-if="item.type == 4">分类:政策法规</div>
+                  <div class="info  info-title" v-if="item.type == 5">分类:党员学习</div>
+                  <div class=" info-publish">
+                    <div class="info ">发布时间:{{item.time}}</div>
+                    <span class="info publish-num">阅读{{item.read}}</span>
+                  </div>
                 </div>
-                <div class="start-btn" @click="onItemClick(index, item)">开始</div>
-                <div class="clear"></div>
               </div>
-            </div>
-            <div class="task-title">
-              <div class="line left-line"></div>
-              <div class="title">业务提醒</div>
-              <div class="line right-line"></div>
-            </div>
-            <div v-for="(item, index) in list">
-              <div  v-if="item.type == 3 || item.type == 4"
-                    class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-                <div class="info info-title"><label class="info-lable">{{item.remindName}}：</label><label>{{item.criminalName}}</label></div>
-                <div v-if="item.type == 3">
-                  <div class="info"><label class="info-lable">谈话时间：</label><span>{{item.time}}</span></div>
+              <div class="info-list" v-if="!active">
+                <div class="img-avatar">
+                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
                 </div>
-                <div v-if="item.type == 4">
-                  <div class="info  info-title"><label>{{item.name}}</label></div>
-                  <div class="info"><label class="info-lable">提交时间：</label><span>{{item.time}}</span></div>
+                <div class="info-content">
+                  <div class="title">
+                    {{item.title}}
+                  </div>
+                  <div class="info  info-title" v-if="item.type == 1">分类:党建要闻</div>
+                  <div class="info  info-title" v-if="item.type == 2">分类:通知公告</div>
+                  <div class="info  info-title" v-if="item.type == 3">分类:党内公示</div>
+                  <div class="info  info-title" v-if="item.type == 4">分类:政策法规</div>
+                  <div class="info  info-title" v-if="item.type == 5">分类:党员学习</div>
+                  <div class=" info-publish">
+                    <div class="info ">发布时间:{{item.time}}</div>
+                    <span class="info publish-num">阅读{{item.read}}</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="start-btn" @click="onItemClick(index, item)">查看</div>
-                <div class="clear"></div>
-              </div>
             </div>
           </scroller>
         </div>
@@ -123,7 +123,7 @@
 
   import Menu from '../../components/menu/g-menu.vue'
   import {mapActions} from 'vuex'
-  import {workbenchList} from '../../service/index'
+  import {zwIndexData} from '../../service/index'
   export default {
     name: "message.vue",
     components: {
@@ -133,10 +133,12 @@
       return {
         page: 0,
         rows: 5,
+        bannerArr:['banner1.jpeg','banner02.jpeg','banner03.jpeg'],
         list: [],
         tasksList:[],
         remindList:[],
         searchText:'',
+        active:'',
         scrollerPosition: null
       }
     },
@@ -193,7 +195,7 @@
         if (action === 'need_refresh') {
           loading = true;
         }
-        workbenchList(params, loading).then((rets)=>{
+        zwIndexData(params, loading).then((rets)=>{
           console.log("rets---->",rets)
           this.$api.process(rets, (data) => {
             if (action === 'refresh' || action === 'need_refresh') {
@@ -234,6 +236,16 @@
         // this.$router.push('/migrants_info/' + item.ID);
         console.log("跳转野蛮")
       },
+      tipsClick(idx){
+        this.active = idx;
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('need_refresh', params);
+      }
     }
   }
 </script>
@@ -242,16 +254,23 @@
   #government{
     .content{
       background: #edf1f4;
+      padding-top: 65px;
       .banner{
         height: 300px;
+        .banner-item{
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
       .module{
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         background-color: #fff;
-        margin: 10px 20px;
-        border-radius: 10px;
+        /*margin: 10px 20px;*/
+        /*border-radius: 10px;*/
         .module-item{
           flex: 1;
           width: 170px;
@@ -402,7 +421,40 @@
             background-color: rgba(0,0,0,.11);
           }
         }
+        .info-list{
+          display: flex;
+          background-color: #fff;
+          margin: 20px;
+          border-radius: 10px;
+          padding: 20px 10px;
+          color: #c0c0c0;
+          .info-content{
+            flex:1;
+            .title{
+              font-size: 14px;/*no*/
+              color: #000;
+              margin-bottom: 20px;
+            }
+          }
+          .img-avatar{
+            width: 140px;
+            height: 140px;
+            margin-right: 15px;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .info{
+            margin-bottom: 10px;
+          }
+          .info-publish{
+            display: flex;
+            justify-content: space-between;
+          }
+        }
       }
+
     }
   }
 
