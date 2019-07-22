@@ -68,6 +68,12 @@ const GovernmentIndex = r => require.ensure([], () => r(require('@/views/governm
 
 
 
+
+/*shenjie*/
+const partyFee = r => require.ensure([], () => r(require('@/views/partyFee/index')), 'partyFee') //党建收费
+const ideaReport = r => require.ensure([], () => r(require('@/views/ideaReport/index')), 'ideaReport') //思想汇报
+const ideaReportNew = r => require.ensure([], () => r(require('@/views/ideaReport/new')), 'ideaReportNew') //新建思想汇报
+
 var routes = [
   {
     path: '',
@@ -431,7 +437,31 @@ var routes = [
     meta:{
       value:2
     }
-  }
+  },
+  {
+    path: '/partyFee',
+    name: 'partyFee',
+    component: partyFee,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/ideaReport',
+    name: 'ideaReport',
+    component: ideaReport,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/ideaReportNew',
+    name: 'ideaReportNew',
+    component: ideaReportNew,
+    meta:{
+      value:5
+    }
+  },
 ];
 
 Vue.use(Router);
