@@ -37,5 +37,10 @@
     textarea{
       text-align: left;
     }
+    .normal-button{
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 35px;
+    }
   }
 </style>

@@ -4,15 +4,17 @@
       <mt-button icon="back" slot="left" @click="$router.back()"></mt-button>
     </mt-header>
     <div class="content">
-      <div class="line">
-        <div class="list">
-          <div v-for="(item,index) in list">
-            <mt-cell :title="item.title"   :value="item.fee"></mt-cell>
-            <mt-cell title=""   :value="item.status"></mt-cell>
+          <div class="list" v-for="(item,index) in list">
+            <div class="item">
+              <div class="info title">
+                {{item.title}}
+              </div>
+              <div>{{item.fee}}</div>
+            </div>
+            <div class="tips">
+              <div class="is-pay">{{item.status}}</div>
+            </div>
           </div>
-
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -36,31 +38,33 @@
 </script>
 
 <style lang="scss">
-  #bluetoothSynch{
+  #partyFee{
     background: #f0f0f4;
     min-height: 100vh;
     .content{
-      .line{
-        margin-bottom: 20px;
-        .title{
-          background: #fff;
-          height: 80px;
-          line-height: 80px;
-          font-size: 18px;/*no*/
-          padding: 0 10px;/*no*/
-        }
-        .list{
-          text-indent: 30px;
-          height: 750px;
-          overflow-y: scroll;
-          .mint-cell-value{
-            font-size: 13px;/*no*/
+      .list{
+        background: #fff;
+        margin: 20px 10px 20px;
+        border-radius: 20px;
+        padding: 20px;
+        .item{
+          display: flex;
+          font-size: 14px;/*no*/
+          justify-content: space-between;
+          margin-bottom: 20px;
+          .title{
+            font-size: 16px;/*no*/
+          }
+          .info{
+            flex: 1;
           }
         }
-        .normal-button{
-          width: 90%;
-          margin-left: 5%;
-          margin-top: 35px;
+        .tips{
+          .is-pay{
+            justify-content: flex-end;
+            color: #FF4949;
+            text-align: right;
+          }
         }
       }
     }

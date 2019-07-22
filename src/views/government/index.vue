@@ -133,16 +133,15 @@
       return {
         page: 0,
         rows: 5,
-        bannerArr:['banner1.jpeg','banner02.jpeg','banner03.jpeg'],
         list: [],
+        scrollerPosition: null,
+        bannerArr:['banner1.jpeg','banner02.jpeg','banner03.jpeg'],
         tasksList:[],
         remindList:[],
         searchText:'',
-        active:'',
-        scrollerPosition: null
+        active:''
       }
     },
-
     filters: {
       showOutsiders(items) {
         let arr = [];
@@ -410,7 +409,6 @@
           overflow-x: scroll;
           margin: 20px;
           .tips-item{
-            width: 120px;
             padding: 10px 10px;
             text-align: center;
             background-color: #fff;

@@ -1,120 +1,320 @@
 <template>
-  <div id="specialSubject">
-    <mt-header fixed title="专题教育">
-      <mt-button icon="back" slot="left" @click="$router.back()"></mt-button>
-    </mt-header>
+  <div id="treeOne">
+    <div class="page-part">
+      <mt-header fixed title="专题教育">
+        <mt-button icon="back" slot="left" @click="$router.replace('/governmentIndex')"></mt-button>
+      </mt-header>
+    </div>
     <div class="content">
-      <div class="nav">
-        <mt-button size="small" @click.native.prevent="active = 'tab-container1'">两学一做</mt-button>
-        <mt-button size="small" @click.native.prevent="active = 'tab-container2'">十近十建</mt-button>
-        <mt-button size="small" @click.native.prevent="active = 'tab-container3'">群众路线</mt-button>
-      </div>
-      <div class="page-tab-container">
-        <mt-tab-container class="page-tabbar-tab-container" v-model="active" swipeable>
-          <mt-tab-container-item id="tab-container1">
-            <div v-for="n in 5" class="clearfloat item">
-              <div class="imageContent">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563529888813&di=fe9f9654bf296b39c717dac139ca09e3&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201512%2F12%2F20151212193107_ujGZV.jpeg" >
+      <div class="scroller-content">
+        <div class="tips" >
+          <p class="tips-item" @click="tipsClick(1)">
+            两学一做
+          </p>
+          <p class="tips-item" @click="tipsClick(2)">
+            十近十建
+          </p>
+          <p class="tips-item" @click="tipsClick(3)">
+            群众路线
+          </p>
+        </div>
+        <div class="scroller-wrapper">
+          <scroller :on-refresh="refresh"
+                    :on-infinite="infinite"
+                    ref="scroller">
+            <div   v-for="(item, index) in list">
+              <div class="info-list" v-if="item.type == active">
+                <div class="img-avatar">
+                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
+                </div>
+                <div class="info-content">
+                  <div class="title">
+                    {{item.title}}
+                  </div>
+                  <div class="info  info-title" v-if="item.type == 1">分类:两学一做</div>
+                  <div class="info  info-title" v-if="item.type == 2">分类:十近十建</div>
+                  <div class="info  info-title" v-if="item.type == 3">分类:群众路线</div>
+                  <div class=" info-publish">
+                    <div class="info ">发布时间:{{item.time}}</div>
+                    <span class="info publish-num">阅读{{item.read}}</span>
+                  </div>
+                </div>
               </div>
-              <div class="textContent">
-                <h2>司法部副部长刘志强在新疆甘肃调研司法行政工作</h2>
-                <mt-cell title="分类" value="通知公告"></mt-cell>
-                <mt-cell title="发布时间" value="2019-07-21"></mt-cell>
-                <mt-cell title="阅读" value="500"></mt-cell>
+              <div class="info-list" v-if="!active">
+                <div class="img-avatar">
+                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
+                </div>
+                <div class="info-content">
+                  <div class="title">
+                    {{item.title}}
+                  </div>
+                  <div class="info  info-title" v-if="item.type == 1">分类:党建要闻</div>
+                  <div class="info  info-title" v-if="item.type == 2">分类:通知公告</div>
+                  <div class="info  info-title" v-if="item.type == 3">分类:党内公示</div>
+                  <div class="info  info-title" v-if="item.type == 4">分类:政策法规</div>
+                  <div class="info  info-title" v-if="item.type == 5">分类:党员学习</div>
+                  <div class=" info-publish">
+                    <div class="info ">发布时间:{{item.time}}</div>
+                    <span class="info publish-num">阅读{{item.read}}</span>
+                  </div>
+                </div>
               </div>
+
             </div>
-          </mt-tab-container-item>
-          <mt-tab-container-item id="tab-container2">
-            <div v-for="n in 3" class="clearfloat item">
-              <div class="imageContent">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1563520643&di=63fabd0dc73a18049fe1429aac5347e8&src=http://img2.ph.126.net/8Y1u9aYRhqT4KHumTO_y1w==/6619210632305894354.jpg" >
-              </div>
-              <div class="textContent">
-                <h2>司法部副部长刘志强在新疆甘肃调研司法行政工作</h2>
-                <mt-cell title="分类" value="通知公告"></mt-cell>
-                <mt-cell title="发布时间" value="2019-07-21"></mt-cell>
-                <mt-cell title="阅读" value="500"></mt-cell>
-              </div>
-            </div>
-          </mt-tab-container-item>
-          <mt-tab-container-item id="tab-container3">
-            <div v-for="n in 4" class="clearfloat item">
-              <div class="imageContent">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1563520690&di=dbe773d87eea1887224433bc8bcfd4e2&src=http://pic.nipic.com/2008-06-13/2008613104551168_2.jpg" >
-              </div>
-              <div class="textContent">
-                <h2>司法部副部长刘志强在新疆甘肃调研司法行政工作</h2>
-                <mt-cell title="分类" value="通知公告"></mt-cell>
-                <mt-cell title="发布时间" value="2019-07-21"></mt-cell>
-                <mt-cell title="阅读" value="500"></mt-cell>
-              </div>
-            </div>
-          </mt-tab-container-item>
-        </mt-tab-container>
+          </scroller>
+        </div>
+
       </div>
     </div>
+    <v-menu :checked="1"></v-menu>
   </div>
 </template>
 
 <script>
+
+  import Menu from '../../components/menu/g-menu.vue'
+  import {mapActions} from 'vuex'
+  import {zwIndexData} from '../../service/index'
   export default {
-    data(){
+    name: "governmentIndex",
+    components: {
+      "v-menu": Menu
+    },
+    data() {
       return {
-        active: 'tab-container1'
+        page: 0,
+        rows: 5,
+        list: [],
+        scrollerPosition: null,
+        bannerArr:['banner1.jpeg','banner02.jpeg','banner03.jpeg'],
+        tasksList:[],
+        remindList:[],
+        searchText:'',
+        active:''
+      }
+    },
+    filters: {
+      showOutsiders(items) {
+        let arr = [];
+        items && items.forEach((o) => {
+          arr.push(o['WLRYXM']);
+        });
+        return arr.join(',');
+      },
+      showCurrent(item) {
+        if (!item || item['OWNER_ID'] === '-999999') {
+          return '已办结'
+        }
+        if (item) {
+          return item['JS_MC'] + ':' + item['USER_NAME']
+        }
+        return '尚未提交'
+      }
+    },
+    activated() {
+      let needRefresh = this.$store.getters.getNeedRefresh();
+
+      if (needRefresh) {
+        this.setNeedRefresh(false);
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('need_refresh', params);
+      } else {
+        if (this.scrollerPosition) {
+          setTimeout(()=>{
+            this.$refs['scroller'].scrollTo(this.scrollerPosition.left, this.scrollerPosition.top, false);
+            this.scrollerPosition = null;
+          }, 10)
+        }
+      }
+    },
+    deactivated() {
+      this.scrollerPosition = this.$refs['scroller'].getPosition();
+    },
+
+    methods: {
+      ...mapActions([
+        'setNeedRefresh',
+      ]),
+      load(action, params, done) {
+        let loading = false;
+        if (action === 'need_refresh') {
+          loading = true;
+        }
+        zwIndexData(params, loading).then((rets)=>{
+          console.log("rets---->",rets)
+          this.$api.process(rets, (data) => {
+            if (action === 'refresh' || action === 'need_refresh') {
+              this.data = [];
+            }
+            if (data) {
+              if (rets.length < this.rows) {
+                done && done(true);
+              } else {
+                done && done();
+              }
+              this.list = this.list.concat(data);
+            }
+          }, function () {
+            done &&  done(true)
+          });
+        })
+      },
+      refresh(done) {
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('refresh', params, done);
+      },
+      infinite(done) {
+        this.page = this.page + 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('infinite', params, done);
+      },
+      onItemClick(index, item) {
+        // this.$router.push('/migrants_info/' + item.ID);
+        console.log("跳转野蛮")
+      },
+      tipsClick(idx){
+        this.active = idx;
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('need_refresh', params);
       }
     }
   }
 </script>
 
 <style lang="scss">
-  #specialSubject{
-    .clearfloat:after{
-      display:block;
-      clear:both;
-      content:"";
-      visibility:hidden;
-      height:0
-    }
-    .mint-cell{
-      min-height: 24px;
-      .mint-cell-wrapper{
-        padding-left: 0px;
+  #treeOne{
+    .content{
+      background: #edf1f4;
+      padding-top: 65px;
+      .task-title{
+        color: #163995;
+        font-size: 16px;/*no*/
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 80px 60px 20px;
+        .title{
+          width: 200px;
+          text-align: center;
+        }
+        .line{
+          width: 200px;
+          background:#163995 ;
+          height: 1px ;/*no*/
+        }
+        .left-line{
+          flex: 1;
+        }
+        .right-line{
+          flex: 1;
+        }
       }
-      .mint-cell-wrapper{
-        background-image: none;
+      .page-infinite-listitem{
+        border-radius: 20px;
+        margin: 20px 20px 0 20px;
+        .info{
+          margin-bottom: 15px;
+          span {
+            color: #a0a0a0;
+          }
+        }
+        .info-title{
+          font-size:15px;/*no*/
+          font-weight: 600;
+          margin-bottom: 25px;
+        }
+        .start-btn{
+          background-color:#163995;
+          color:#fff;
+          width: 120px;
+          height: 40px;
+          line-height: 40px;
+          padding: 10px 0;
+          border-radius: 40px;
+          text-align: center;
+          float: right;
+        }
+        .start-btn:active{
+          background-color:rgba(22,57,149,0.53);
+        }
+        .clear{
+          clear: both;
+        }
+      }
+      .scroller-content{
+        .tips{
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          margin: 20px;
+          .tips-item{
+            padding: 10px 10px;
+            text-align: center;
+            background-color: #fff;
+            margin-right: 10px;
+            color: #136dc5;
+          }
+          .tips-item:active{
+            background-color: rgba(0,0,0,.11);
+          }
+        }
+        .info-list{
+          display: flex;
+          background-color: #fff;
+          margin: 20px;
+          border-radius: 10px;
+          padding: 20px 10px;
+          color: #c0c0c0;
+          .info-content{
+            flex:1;
+            .title{
+              font-size: 14px;/*no*/
+              color: #000;
+              margin-bottom: 20px;
+            }
+          }
+          .img-avatar{
+            width: 140px;
+            height: 140px;
+            margin-right: 15px;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .info{
+            margin-bottom: 10px;
+          }
+          .info-publish{
+            display: flex;
+            justify-content: space-between;
+          }
+        }
       }
 
     }
-    .mint-cell:last-child{
-      background-image: none;
-    }
-    [data-dpr="1"] .mint-cell-wrapper,
-    [data-dpr="1"] .mint-field-core {
-      font-size: 10px;
-    }
-    .imageContent,.textContent{
-      float: left;
-    }
-    .imageContent{
-      position: absolute;
-      left: 0px;
-      top:50%;
-      transform: translateY(-50%);
-    }
-    .textContent{
-      width: 100%;
-      margin-left: 10px;
-    }
-    img{
-      width: 120px;
-      height: 120px;
-      border-radius: 5px;
-    }
-    .item{
-      margin-top: 30px;
-      position: relative;
-      padding-left: 120px
-    }
-
   }
+
 </style>
+
