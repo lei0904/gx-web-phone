@@ -72,6 +72,7 @@ if (Vue.$ces.Config.service === 'static') {
   /*移动政务数据*/
 
   var zwIndexData =  (params, loading) => setPromise(zwData.indexListData, loading);
+  var zwExamsList =  (params, loading) => setPromise(zwData.zwExamsList, loading);
 
 
 } else {
@@ -114,5 +115,6 @@ export {
   dailycheckList,
   flowExamineList,
   dailyExamineList,
-  zwIndexData
+  zwIndexData,
+  zwExamsList
 }

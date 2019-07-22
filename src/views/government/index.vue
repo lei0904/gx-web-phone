@@ -8,7 +8,7 @@
     <div class="content">
       <div class="banner">
         <mt-swipe :auto="4000">
-          <mt-swipe-item class="banner-item" v-for="item in bannerArr">
+          <mt-swipe-item class="banner-item" :key="idx" v-for="(item,idx) in bannerArr">
             <img :src='"../../../static/img/"+ item' alt="">
           </mt-swipe-item>
         </mt-swipe>
@@ -26,7 +26,7 @@
           <i class="icon icon3"></i>
           <p>活动报名</p>
         </router-link>
-        <router-link to='' class="module-item">
+        <router-link to="/exams" class="module-item">
           <i class="icon icon4"></i>
           <p>在线考试</p>
         </router-link>
@@ -125,7 +125,7 @@
   import {mapActions} from 'vuex'
   import {zwIndexData} from '../../service/index'
   export default {
-    name: "message.vue",
+    name: "governmentIndex",
     components: {
       "v-menu": Menu
     },

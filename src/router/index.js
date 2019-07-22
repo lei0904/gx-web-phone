@@ -40,7 +40,6 @@ const emergencyFollowUp = r => require.ensure([], () => r(require('@/views/emerg
 const emergencyNew = r => require.ensure([], () => r(require('@/views/emergency/new')), 'emergencyNew') //事件添加
 //*蓝牙被服点名服药工具处置模块END*//
 
-
 const dailySupervision = r => require.ensure([], () => r(require('@/views/dailySupervision/index')), 'dailySupervision') //日常监管
 const dailyCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/check')), 'dailyCheck') //日考评登记
 const dailyNewCheck = r => require.ensure([], () => r(require('@/views/dailySupervision/newCheck')), 'dailyNewCheck') //新建考评登记
@@ -64,9 +63,8 @@ const medicineManage = r => require.ensure([], () => r(require('@/views/medicine
 const medicineManageNew = r => require.ensure([], () => r(require('@/views/medicineManage/new')), 'medicineManageNew') //新建服药
 
 /*移动政务*/
-const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex') //应用中心
-
-
+const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex'); //应用中心
+const exams = r => require.ensure([], () => r(require('@/views/governmentExams/index')), 'exams'); //考试
 
 var routes = [
   {
@@ -430,6 +428,14 @@ var routes = [
     component: GovernmentIndex,
     meta:{
       value:2
+    }
+  },
+  {
+    path: '/exams',
+    name: 'exams',
+    component: exams,
+    meta:{
+      value:3
     }
   }
 ];

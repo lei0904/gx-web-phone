@@ -17,7 +17,7 @@
             </div>
             <div v-for="(item, index) in list">
               <div v-if="item.type == 1 || item.type == 2" class="page-infinite-listitem" :class="{'npb': index  == list.length - 1}">
-                <div v-if="item.type == 1">
+                <div v-if="item.type == 1" >
                   <div class="info info-title"><label class="info-lable">点名：</label><label>{{item.name}}</label></div>
                   <div class="info"><label class="info-lable">点名时间：</label><span>{{item.time}}</span></div>
                   <div class="info"><label class="info-lable">预计点名人数：</label><span>{{item.num}} </span></div>
@@ -172,6 +172,20 @@
       onItemClick(index, item) {
         // this.$router.push('/migrants_info/' + item.ID);
         console.log("跳转野蛮")
+        switch (item.type) {
+          case 1:
+            this.$router.push('/rollcallmanage');
+            break;
+          case 2:
+            this.$router.push('/logExamine');
+            break;
+          case 3:
+            this.$router.push('/talkManage');
+            break;
+          case 4:
+            this.$router.push('/medicinemanage');
+            break;
+        }
       },
     }
   }
