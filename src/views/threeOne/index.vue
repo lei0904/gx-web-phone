@@ -1,68 +1,24 @@
 <template>
-  <div id="government">
+  <div id="treeOne">
     <div class="page-part">
-      <mt-header fixed title="移动政务">
-        <mt-button icon="back" slot="left" @click="$router.replace('/myapp')"></mt-button>
+      <mt-header fixed title="三科一会">
+        <mt-button icon="back" slot="left" @click="$router.replace('/governmentIndex')"></mt-button>
       </mt-header>
     </div>
     <div class="content">
-      <div class="banner">
-        <mt-swipe :auto="4000">
-          <mt-swipe-item class="banner-item" :key="idx" v-for="(item,idx) in bannerArr">
-            <img :src='"../../../static/img/"+ item' alt="">
-          </mt-swipe-item>
-        </mt-swipe>
-      </div>
-      <div class="module">
-        <router-link  to='/partyFee' class="module-item">
-          <i class="icon icon1"></i>
-          <p>党建收费</p>
-        </router-link>
-        <router-link  to='/ideaReport' class="module-item">
-          <i class="icon icon2"></i>
-          <p>思想汇报</p>
-        </router-link>
-        <router-link to='/activityEnroll' class="module-item">
-          <i class="icon icon3"></i>
-          <p>活动报名</p>
-        </router-link>
-        <router-link to="/exams" class="module-item">
-          <i class="icon icon4"></i>
-          <p>在线考试</p>
-        </router-link>
-        <router-link to='/missionManage' class="module-item">
-          <i class="icon icon5"></i>
-          <p>任务管理</p>
-        </router-link>
-        <router-link to='/threeOne' class="module-item">
-          <i class="icon icon6"></i>
-          <p>三科一会</p>
-        </router-link>
-        <router-link to='/specialSubject' class="module-item">
-          <i class="icon icon7"></i>
-          <p>专题教育</p>
-        </router-link>
-        <router-link to='/combatCorruption' class="module-item">
-          <i class="icon icon8"></i>
-          <p>反腐倡廉</p>
-        </router-link>
-      </div>
       <div class="scroller-content">
         <div class="tips" >
           <p class="tips-item" @click="tipsClick(1)">
-            党建要闻
+            支部党员大会
           </p>
           <p class="tips-item" @click="tipsClick(2)">
-            通知公告
+            党支部委员会
           </p>
           <p class="tips-item" @click="tipsClick(3)">
-            党内公示
+            党小组会
           </p>
           <p class="tips-item" @click="tipsClick(4)">
-            政策法规
-          </p>
-          <p class="tips-item" @click="tipsClick(5)">
-            党员学习
+            党课
           </p>
         </div>
         <div class="scroller-wrapper">
@@ -78,11 +34,10 @@
                   <div class="title">
                     {{item.title}}
                   </div>
-                  <div class="info  info-title" v-if="item.type == 1">分类:党建要闻</div>
-                  <div class="info  info-title" v-if="item.type == 2">分类:通知公告</div>
-                  <div class="info  info-title" v-if="item.type == 3">分类:党内公示</div>
-                  <div class="info  info-title" v-if="item.type == 4">分类:政策法规</div>
-                  <div class="info  info-title" v-if="item.type == 5">分类:党员学习</div>
+                  <div class="info  info-title" v-if="item.type == 1">分类:支部党员大会</div>
+                  <div class="info  info-title" v-if="item.type == 2">分类:党支部委员会</div>
+                  <div class="info  info-title" v-if="item.type == 3">分类:党小组会</div>
+                  <div class="info  info-title" v-if="item.type == 4">分类:党课</div>
                   <div class=" info-publish">
                     <div class="info ">发布时间:{{item.time}}</div>
                     <span class="info publish-num">阅读{{item.read}}</span>
@@ -250,101 +205,10 @@
 </script>
 
 <style lang="scss">
-  #government{
+  #treeOne{
     .content{
       background: #edf1f4;
       padding-top: 65px;
-      .banner{
-        height: 300px;
-        .banner-item{
-          img{
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
-      .module{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        background-color: #fff;
-        /*margin: 10px 20px;*/
-        /*border-radius: 10px;*/
-        .module-item{
-          flex: 1;
-          width: 170px;
-          height: 150px;
-          padding: 10px;
-          box-sizing: border-box;
-          p{
-            color: #000;
-            width: 170px;
-            height: 60px;
-            padding-top: 10px;
-            font-weight: 500;
-            text-align: center;
-          }
-          .icon{
-            display: block;
-            width:60px;
-            height: 60px;
-            margin: 10px auto;
-          }
-          .icon1{
-            background-image: url("../../../static/img/icon-zw-01.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-
-          .icon2{
-            background-image: url("../../../static/img/icon-zw-02.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-
-          .icon3{
-            background-image: url("../../../static/img/icon-zw-03.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-          .icon4{
-            background-image: url("../../../static/img/icon-zw-04.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-          .icon5{
-            background-image: url("../../../static/img/icon-zw-05.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-          .icon6{
-            background-image: url("../../../static/img/icon-zw-06.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-          .icon7{
-            background-image: url("../../../static/img/icon-zw-07.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-          .icon8{
-            background-image: url("../../../static/img/icon-zw-08.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
-        }
-        .module-item:active{
-          background-color: rgba(0,0,0,0.13);
-        }
-      }
       .task-title{
         color: #163995;
         font-size: 16px;/*no*/
@@ -457,3 +321,4 @@
   }
 
 </style>
+
