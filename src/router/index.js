@@ -73,6 +73,13 @@ const GovernmentIndex = r => require.ensure([], () => r(require('@/views/governm
 const partyFee = r => require.ensure([], () => r(require('@/views/partyFee/index')), 'partyFee') //党建收费
 const ideaReport = r => require.ensure([], () => r(require('@/views/ideaReport/index')), 'ideaReport') //思想汇报
 const ideaReportNew = r => require.ensure([], () => r(require('@/views/ideaReport/new')), 'ideaReportNew') //新建思想汇报
+const activityEnroll = r => require.ensure([], () => r(require('@/views/activityEnroll/index')), 'activityEnroll') //活动报名
+const activityEnrollDetail = r => require.ensure([], () => r(require('@/views/activityEnroll/detail')), 'activityEnrollDetail') //活动参与
+const missionManage = r => require.ensure([], () => r(require('@/views/missionManage/index')), 'missionManage') //任务管理
+const missionManageDetail = r => require.ensure([], () => r(require('@/views/missionManage/detail')), 'missionManageDetail') //任务详情
+const threeOne = r => require.ensure([], () => r(require('@/views/threeOne/index')), 'threeOne') //三会一课
+const specialSubject = r => require.ensure([], () => r(require('@/views/specialSubject/index')), 'specialSubject') //专题教育
+const combatCorruption = r => require.ensure([], () => r(require('@/views/combatCorruption/index')), 'combatCorruption') //反腐倡廉
 
 var routes = [
   {
@@ -458,6 +465,62 @@ var routes = [
     path: '/ideaReportNew',
     name: 'ideaReportNew',
     component: ideaReportNew,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/activityEnroll',
+    name: 'activityEnroll',
+    component: activityEnroll,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/activityEnrollDetail',
+    name: 'activityEnrollDetail',
+    component: activityEnrollDetail,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/missionManage',
+    name: 'missionManage',
+    component: missionManage,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/missionManageDetail',
+    name: 'missionManageDetail',
+    component: missionManageDetail,
+    meta:{
+      value:6
+    }
+  },
+  {
+    path: '/threeOne',
+    name: 'threeOne',
+    component: threeOne,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/specialSubject',
+    name: 'specialSubject',
+    component: specialSubject,
+    meta:{
+      value:5
+    }
+  },
+  {
+    path: '/combatCorruption',
+    name: 'combatCorruption',
+    component: combatCorruption,
     meta:{
       value:5
     }
