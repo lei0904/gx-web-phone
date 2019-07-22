@@ -10,7 +10,7 @@
         </div>
         <div class="textContent">
           <h2>司法部副部长刘志强在新疆甘肃调研司法行政工作</h2>
-          <mt-cell title="分类" value="通知公告"></mt-cell>
+          <mt-cell  title="分类" value="通知公告"></mt-cell>
           <mt-cell title="发布时间" value="2019-07-21"></mt-cell>
           <mt-cell title="阅读" value="500"></mt-cell>
         </div>
@@ -43,6 +43,13 @@
       .mint-cell-wrapper{
         padding-left: 0px;
       }
+      .mint-cell-wrapper{
+        background-image: none;
+      }
+
+    }
+    .mint-cell:last-child{
+      background-image: none;
     }
     [data-dpr="1"] .mint-cell-wrapper,
     [data-dpr="1"] .mint-field-core {

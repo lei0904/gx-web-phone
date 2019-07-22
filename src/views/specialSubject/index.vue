@@ -80,6 +80,13 @@
       .mint-cell-wrapper{
         padding-left: 0px;
       }
+      .mint-cell-wrapper{
+        background-image: none;
+      }
+
+    }
+    .mint-cell:last-child{
+      background-image: none;
     }
     [data-dpr="1"] .mint-cell-wrapper,
     [data-dpr="1"] .mint-field-core {
