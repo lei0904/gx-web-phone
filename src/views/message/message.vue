@@ -1,24 +1,216 @@
 <template>
-    <div id="message">
+  <div id="message">
+    <div class="page-part">
       <mt-header fixed title="消息">
-        <router-link to="/workbench" slot="left">
-          <mt-button icon="back"></mt-button>
-        </router-link>
+        <mt-button icon="back" slot="left" @click="$router.replace('/')"></mt-button>
       </mt-header>
-      <v-menu :checked="3"></v-menu>
     </div>
+    <div class="content">
+      <div class="scroller-content">
+        <div class="scroller-wrapper">
+          <scroller :on-refresh="refresh"
+                    :on-infinite="infinite"
+                    ref="scroller">
+            <div   v-for="(item, index) in list">
+              <div class="info-list">
+                <div class="img-avatar" v-if="item.imgName">
+                  <img :src='"../../../static/img/"+item.imgName' alt="">
+                </div>
+                <div class="img-avatar" v-else>
+                  <img src='../../../static/img/icon-qq-02.jpg' alt="">
+                </div>
+                <div class="info-content">
+                    <div class="info items">
+                      <div class="name">{{item.name}}</div>
+                      <div class="time">{{item.time}}</div>
+                    </div>
+                    <div class="info">{{item.msg}}</div>
+                </div>
+              </div>
+            </div>
+          </scroller>
+        </div>
+
+      </div>
+    </div>
+    <v-menu :checked="1"></v-menu>
+  </div>
 </template>
 
 <script>
+
   import Menu from '../../components/menu/menu.vue'
-    export default {
-        name: "message.vue",
-      components: {
-        "v-menu": Menu
+  import {mapActions} from 'vuex'
+  import {messageList} from '../../service/index'
+  export default {
+    name: "governmentIndex",
+    components: {
+      "v-menu": Menu
+    },
+    data() {
+      return {
+        page: 0,
+        rows: 5,
+        list: [],
+        scrollerPosition: null
+
+      }
+    },
+    filters: {
+      showOutsiders(items) {
+        let arr = [];
+        items && items.forEach((o) => {
+          arr.push(o['WLRYXM']);
+        });
+        return arr.join(',');
       },
+      showCurrent(item) {
+        if (!item || item['OWNER_ID'] === '-999999') {
+          return '已办结'
+        }
+        if (item) {
+          return item['JS_MC'] + ':' + item['USER_NAME']
+        }
+        return '尚未提交'
+      }
+    },
+    activated() {
+      let needRefresh = this.$store.getters.getNeedRefresh();
+
+      if (needRefresh) {
+        this.setNeedRefresh(false);
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('need_refresh', params);
+      } else {
+        if (this.scrollerPosition) {
+          setTimeout(()=>{
+            this.$refs['scroller'].scrollTo(this.scrollerPosition.left, this.scrollerPosition.top, false);
+            this.scrollerPosition = null;
+          }, 10)
+        }
+      }
+    },
+    deactivated() {
+      this.scrollerPosition = this.$refs['scroller'].getPosition();
+    },
+
+    methods: {
+      ...mapActions([
+        'setNeedRefresh',
+      ]),
+      load(action, params, done) {
+        let loading = false;
+        if (action === 'need_refresh') {
+          loading = true;
+        }
+        messageList(params, loading).then((rets)=>{
+          console.log("rets---->",rets)
+          this.$api.process(rets, (data) => {
+            if (action === 'refresh' || action === 'need_refresh') {
+              this.data = [];
+            }
+            if (data) {
+              if (rets.length < this.rows) {
+                done && done(true);
+              } else {
+                done && done();
+              }
+              this.list = this.list.concat(data);
+            }
+          }, function () {
+            done &&  done(true)
+          });
+        })
+      },
+      refresh(done) {
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('refresh', params, done);
+      },
+      infinite(done) {
+        this.page = this.page + 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('infinite', params, done);
+      },
+      onItemClick(index, item) {
+        // this.$router.push('/migrants_info/' + item.ID);
+        console.log("跳转野蛮")
+      },
+      tipsClick(idx){
+        this.active = idx;
+        this.page = 1;
+        let params = {
+          'page': this.page,
+          'rows': this.rows,
+          'proposerid': this.$store.getters.getLoginInfo()['proposerid']
+        };
+        this.load('need_refresh', params);
+      }
     }
+  }
 </script>
 
-<style scoped>
+<style lang="scss">
+  #message{
+    .content{
+      background: #edf1f4;
+      padding-top: 65px;
+      .scroller-content{
+        .info-list{
+          display: flex;
+          background-color: #fff;
+          margin: 20px;
+          border-radius: 10px;
+          padding: 20px 10px;
+          color: #c0c0c0;
+          .info-content{
+            flex:1;
+            .info{
+              font-size: 16px;/*no*/
+              margin-bottom: 10px;
+            }
+            .items{
+              display: flex;
+              margin-bottom: 20px;
+              font-size: 12px;/*no*/
+              justify-content: space-between;
+              .name{
+                flex: 1;
+                font-size: 15px;/*no*/
+                color: #000;
+              }
+              .time{
+                flex: 1;
+                text-align: right;
+              }
+            }
+          }
+          .img-avatar{
+            width: 140px;
+            height: 140px;
+            margin-right: 15px;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+
+    }
+  }
 
 </style>

@@ -5,7 +5,7 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content" :style="{height:contentH+'px'}">
+    <div class="content" >
       <div class="sudoku">
         <router-link :to="'/criminalRecord'" class="item">
           <i class="icon-item item-1"></i>

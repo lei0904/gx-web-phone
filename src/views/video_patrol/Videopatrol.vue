@@ -149,7 +149,6 @@
       }
     },
     activated() {
-      debugger
       let needRefresh = this.$store.getters.getNeedRefresh();
 
       if (needRefresh) {

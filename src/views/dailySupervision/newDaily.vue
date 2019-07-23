@@ -20,7 +20,7 @@
             <p class="photo-bg" @click="takePhoto"></p>
           </div>
         </div>
-        <mt-cell title="民警签字" value="已签字"  is-link></mt-cell>
+        <mt-cell title="民警签字" value="已签字"  is-link @click.native="signature"> </mt-cell>
       </div>
       <mt-button class="normal-button" size="large" type="primary" @click="subForm">提交申请</mt-button>
     </div>
@@ -175,20 +175,7 @@
 
 
         ],
-        imgList:[
-          {
-            id:'1',
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563529888813&di=fe9f9654bf296b39c717dac139ca09e3&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201512%2F12%2F20151212193107_ujGZV.jpeg"
-          },
-          {
-            id:'2',
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1563520643&di=63fabd0dc73a18049fe1429aac5347e8&src=http://img2.ph.126.net/8Y1u9aYRhqT4KHumTO_y1w==/6619210632305894354.jpg"
-          },
-          {
-            id:'3',
-            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1563520690&di=dbe773d87eea1887224433bc8bcfd4e2&src=http://pic.nipic.com/2008-06-13/2008613104551168_2.jpg"
-          },
-        ]
+        imgList:[]
 
       }
     },
@@ -238,11 +225,32 @@
         this.form.clause = v.value;
       },
       takePhoto(){
-        console.log("takephoto---->")
+        let ths = this;
+        ths.$ces.Plugins.Camera.take(function(rets){
+          console.log('--->rets',rets);
+          if (rets.status === 1) {
+            let data =rets.data;
+            let obj={
+              src:'data:image/jpg;base64,'+data.thumbnail
+            };
+            ths.imgList.push(obj);
+          }else{
+            ths.$mint.MessageBox.toast({
+              position:'center',
+              message:'拍照失败'
+            })
+          }
+        })
       },
       clearImg(idx){
         this.$mint.MessageBox.confirm('确认删除此凭证?','系统提示').then(()=>{
           this.imgList.splice(idx,1)
+        })
+      },
+      signature(){
+        let ths = this;
+        ths.$ces.Plugins.SignName.take((rets)=>{
+          console.log(rets)
         })
       }
 

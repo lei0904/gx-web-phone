@@ -15,7 +15,6 @@ let Camera = (function () {
         opts = opts || {};
         params = Utils.extend(defOpts, opts);
         params = [params, {type: opts.type || _type.path, name: opts.name || ''}];
-
         JSBridge.callHandler('CesPluginsCamera', params, callback);
     };
 

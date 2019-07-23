@@ -1,5 +1,5 @@
 export default {
-  "plugin": false,
+  "plugin": true,
    'service': 'static',
   // 'service': 'http',
   "debug": true,

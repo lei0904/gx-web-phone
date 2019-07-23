@@ -6,15 +6,19 @@
       </mt-header>
     </div>
     <div class="content">
-        <div class="scroller-wrapper">
+        <div class="scroller-wrapper" :style="{height:listH+'px'}">
             <div class="exam-content">
-              <mt-swipe :auto="0" :show-indicators="false">
+              <mt-swipe class="question" :auto="0" :show-indicators="false" :continuous="false">
                 <mt-swipe-item class="exam-item" :key="idx" v-for="(item,idx) in list" :style="{height:listH+'px'}">
                   <div>{{idx+1}}、{{item.question}}</div>
-                  <div  v-for="(itemAnswer,idx) in item.choice" class="item-answer">
+                  <div  v-for="itemAnswer in item.choice" class="item-answer">
                     <label :for="item.id">
                       <input type="radio" name="test" :id="item.id" :value="item.value"/><span>{{itemAnswer.label}}</span>
                     </label>
+                  </div>
+
+                  <div class="sub-btn" v-if="len == (idx+1)" :target="idx">
+                    <mt-button class="normal-button" size="large" type="primary" @click.native="sub">确定</mt-button>
                   </div>
                 </mt-swipe-item>
               </mt-swipe>
@@ -40,6 +44,7 @@
         list: [],
         listH:0,
         value:'',
+        len:0,
         scrollerPosition: null
       }
     },
@@ -53,10 +58,18 @@
       zwExamsList(params, false).then((rets)=>{
         console.log("rets---->",rets)
         this.list = rets.data;
+        this.len = this.list.length;
+        console.log('--->',this.len)
       })
-      this.listH = document.body.clientHeight;
+      this.listH = document.body.clientHeight - 120;
     },
     methods: {
+      sub(){
+        let ths = this;
+        ths.$mint.MessageBox.confirm('确定完成考试?','提示').then(()=>{
+          ths.$router.push({path:'/governmentIndex'});
+        })
+      }
     }
   }
 </script>
@@ -70,6 +83,7 @@
         .exam-content{
           height: 100%;
           padding: 20px 40px;
+          position: relative;
           .exam-item{
             height: 100%;
             line-height: 1;
@@ -79,6 +93,11 @@
             span{
               padding-left: 20px;
             }
+          }
+          .sub-btn{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
           }
         }
 
