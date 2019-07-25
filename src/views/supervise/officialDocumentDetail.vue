@@ -1,11 +1,11 @@
 <template>
-  <div class="officialDocument">
+  <div class="officialDetail">
     <mt-header fixed title="公文详情">
       <router-link to="/officialDocument" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content">
+    <div class="content" :style="{height:listH+'px'}">
         <div class="main">
           <div class="title">
             关于印发《关于公证服务银行业金融改革创新防范金融风险的指导意见》的通知
@@ -28,7 +28,7 @@
   export default {
     data() {
       return {
-
+        listH:0
       };
     },
     methods: {
@@ -37,7 +37,7 @@
       }
     },
     mounted(){
-
+      this.listH = document.body.clientHeight - 45 ;
     }
 
   }
@@ -45,8 +45,9 @@
 </script>
 
 <style lang="scss">
-  .officialDocument {
+  .officialDetail {
     .content {
+      overflow: scroll;
       .title{
         padding:0 10px;/*no*/
         margin: 80px 0;

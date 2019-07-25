@@ -5,7 +5,7 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content">
+    <div class="content" :style="{height:listH+'px'}">
       <mt-search v-model="keyword"></mt-search>
       <div class="recordList">
         <div class="item" >
@@ -47,7 +47,8 @@
   export default {
     data() {
       return {
-        keyword:''
+        keyword:'',
+        listH:0
       };
     },
     methods: {
@@ -56,6 +57,8 @@
       }
     },
     mounted(){
+
+      this.listH = document.body.clientHeight - 45 ;
 
     }
 
@@ -66,6 +69,7 @@
 <style lang="scss">
   .officialDocument {
     .content {
+      overflow: scroll;
       .mint-search{
         height: auto;
       }
