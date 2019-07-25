@@ -99,7 +99,7 @@
         overflow: scroll;
         .item {
           width: 220px;
-          height: 220px;
+          height: 200px;
           border-radius: 5px;
           margin-left: 22.5px;
           margin-top: 22.5px;
@@ -110,10 +110,10 @@
           color: #153894;
           .icon-item {
             display: block;
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             margin-left: 55px;
-            margin-top: 40px;
+            margin-top: 20px;
             margin-bottom: 10px;
             align-items: flex-start;
           }

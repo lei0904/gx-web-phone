@@ -11,13 +11,14 @@
           <scroller :on-refresh="refresh"
                     :on-infinite="infinite"
                     ref="scroller">
-            <div   v-for="(item, index) in list">
-              <div class="info-list">
+            <div   v-for="(item, idx) in list">
+              <div class="info-list" @click="chatItem(item)">
                 <div class="img-avatar" v-if="item.imgName">
-                  <img :src='"../../../static/img/"+item.imgName' alt="">
+<!--                  <img :src='"../../../static/img/"+item.imgName' alt="">-->
+                  <p class="icon-avatar" :class='"avatar"+item.imgName'></p>
                 </div>
                 <div class="img-avatar" v-else>
-                  <img src='../../../static/img/icon-qq-02.jpg' alt="">
+                  <p class="icon-avatar" :class='"avatar"+item.imgName'></p>
                 </div>
                 <div class="info-content">
                     <div class="info items">
@@ -54,24 +55,6 @@
         list: [],
         scrollerPosition: null
 
-      }
-    },
-    filters: {
-      showOutsiders(items) {
-        let arr = [];
-        items && items.forEach((o) => {
-          arr.push(o['WLRYXM']);
-        });
-        return arr.join(',');
-      },
-      showCurrent(item) {
-        if (!item || item['OWNER_ID'] === '-999999') {
-          return '已办结'
-        }
-        if (item) {
-          return item['JS_MC'] + ':' + item['USER_NAME']
-        }
-        return '尚未提交'
       }
     },
     activated() {
@@ -145,9 +128,8 @@
         };
         this.load('infinite', params, done);
       },
-      onItemClick(index, item) {
-        // this.$router.push('/migrants_info/' + item.ID);
-        console.log("跳转野蛮")
+      chatItem(item){
+         this.$router.push({path:'/chat',query:item});
       },
       tipsClick(idx){
         this.active = idx;
@@ -206,7 +188,32 @@
               width: 100%;
               height: 100%;
             }
+            .icon-avatar{
+              width: 140px;
+              height: 140px;
+            }
+            .avatar1{
+              background-image: url("../../../static/img/icon-qq-02.jpg");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
+            .avatar2{
+              background-image: url("../../../static/img/icon-qq-03.jpg");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
+            .avatar3{
+              background-image: url("../../../static/img/icon-qq-avatar.jpg");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              background-position: center center;
+            }
           }
+        }
+        .info-list:active{
+          background-color:rgba(0,0,0,0.21);
         }
       }
 

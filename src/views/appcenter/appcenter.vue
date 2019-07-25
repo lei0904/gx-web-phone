@@ -121,7 +121,7 @@
             background-position: center center;
             width: 60px;
             height: 60px;
-            margin:20px  auto  10px auto;
+            margin:20px  auto  0 auto;
           }
           .item-text{
             font-size: 12px;/*no*/

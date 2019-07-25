@@ -1,15 +1,13 @@
 <template>
   <div id="government">
-    <div class="page-part">
       <mt-header fixed title="移动政务">
         <mt-button icon="back" slot="left" @click="$router.replace('/myapp')"></mt-button>
       </mt-header>
-    </div>
     <div class="content">
       <div class="banner">
         <mt-swipe :auto="4000">
           <mt-swipe-item class="banner-item" :key="idx" v-for="(item,idx) in bannerArr">
-            <img :src='"../../../static/img/"+ item' alt="">
+            <div class="img" :class="'img'+idx" ></div>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -36,7 +34,7 @@
         </router-link>
         <router-link to='/threeOne' class="module-item">
           <i class="icon icon6"></i>
-          <p>三科一会</p>
+          <p>三会一课</p>
         </router-link>
         <router-link to='/specialSubject' class="module-item">
           <i class="icon icon7"></i>
@@ -72,7 +70,7 @@
             <div   v-for="(item, index) in list">
               <div class="info-list" v-if="item.type == active">
                 <div class="img-avatar">
-                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
+                  <p class="list-bg"></p>
                 </div>
                 <div class="info-content">
                   <div class="title">
@@ -91,7 +89,8 @@
               </div>
               <div class="info-list" v-if="!active">
                 <div class="img-avatar">
-                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
+<!--                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">-->
+                  <p class="list-bg"></p>
                 </div>
                 <div class="info-content">
                   <div class="title">
@@ -260,6 +259,22 @@
           img{
             width: 100%;
             height: 100%;
+          }
+          .img{
+            width: 100%;
+            height: 100%;
+          }
+          .img0{
+            background: url("../../../static/img/banner1.jpeg");
+            background-size:100% 100%;
+          }
+          .img1{
+            background: url("../../../static/img/banner02.jpeg");
+            background-size:100% 100%;
+          }
+          .img2{
+            background: url("../../../static/img/banner03.jpeg");
+            background-size:100% 100%;
           }
         }
       }
@@ -439,6 +454,12 @@
             height: 140px;
             margin-right: 15px;
             img{
+              width: 100%;
+              height: 100%;
+            }
+            .list-bg{
+              background: url("../../../static/img/list-bg.jpeg");
+              background-size: 100% 100%;
               width: 100%;
               height: 100%;
             }

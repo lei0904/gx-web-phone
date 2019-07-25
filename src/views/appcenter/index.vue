@@ -1,15 +1,15 @@
 <template>
-  <div id="myapp" :style="{height:contentHeight+'px',background:`url('../../../static/img/appcenter-background.png')`,'background-size':'100%'}">
+  <div id="myapp" :style="{height:contentHeight+'px'}">
+    <mt-header fixed title="广西监狱局移动门户"></mt-header>
     <div class="content">
       <div class="sudoku">
-        <router-link :to="'/workbench'" class="item">
-          <i class="icon-item item-1 zhifa"></i>
-          <div class="item-text">移动执法</div>
-        </router-link>
-
         <router-link :to="'/governmentIndex'" class="item">
-          <i class="icon-item item-1 zhengwu"></i>
+          <i class="icon-item item-1  zhifa"></i>
           <div class="item-text">移动政务</div>
+        </router-link>
+        <router-link :to="'/workbench'" class="item">
+          <i class="icon-item item-1 zhengwu"></i>
+          <div class="item-text">移动执法</div>
         </router-link>
       </div>
     </div>
@@ -35,7 +35,7 @@
       }
     },
     created() {
-      this.contentHeight = document.body.clientHeight - 45
+      this.contentHeight = document.body.clientHeight
     }
   }
 </script>
@@ -43,6 +43,13 @@
 
 <style lang="scss">
   #myapp{
+    background:url('../../../static/img/appcenter-background.png');
+    background-size:100% 100%;
+    .mint-header{
+      background-color: rgba(0,0,0,0);
+      font-size: 18px;/*no*/
+      font-family: cursive;
+    }
     .content{
       overflow: scroll;
       .sudoku{
@@ -58,11 +65,11 @@
           border-radius: 5px;
           margin-left:22.5px;
           margin-top: 22.5px;
-          background-color:#eff0f5;
+          /*background-color:#eff0f5;*/
           text-align: center;
           font-size:14px;/*no*/
           position: relative;
-          color: #153894;
+          color: #fff;
           .icon-item{
             display: block;
             width: 110px;

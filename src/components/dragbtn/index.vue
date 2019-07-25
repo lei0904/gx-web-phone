@@ -81,7 +81,7 @@
         margin-left: -25px; /*no*/
         width: 50px; /*no*/
         height: 50px; /*no*/
-        line-height: 40px; /*no*/
+        line-height: 50px; /*no*/
         z-index: 1000; 
         text-align: center;
         font-size: 100px; 

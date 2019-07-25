@@ -14,7 +14,7 @@
             <div   v-for="(item, index) in list">
               <div class="info-list" v-if="item.type == active">
                 <div class="img-avatar">
-                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
+                 <p class="list-bg"></p>
                 </div>
                 <div class="info-content">
                   <div class="title">
@@ -32,8 +32,8 @@
               </div>
               <div class="info-list" v-if="!active">
                 <div class="img-avatar">
-                  <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563772470980&di=3c078174d36cda96b98fb19361781bc0&imgtype=0&src=http%3A%2F%2Fwww.cas.cn%2Fxw%2Fzyxw%2Ftpxw%2F200910%2FW020091014598700107536.jpg" alt="">
-                </div>
+                <p class="list-bg"></p>
+                 </div>
                 <div class="info-content">
                   <div class="title">
                     {{item.title}}
@@ -289,6 +289,12 @@
             height: 140px;
             margin-right: 15px;
             img{
+              width: 100%;
+              height: 100%;
+            }
+            .list-bg{
+              background: url("../../../static/img/list-bg.jpeg");
+              background-size: 100% 100%;
               width: 100%;
               height: 100%;
             }

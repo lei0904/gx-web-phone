@@ -14,7 +14,13 @@
         <div class="line">
           <mt-cell title="上次同步时间" label="2018-09-03 10:00:01" >
           <span style="color: green">
-            <mt-button type="primary" size="small">立即同步</mt-button>
+            <mt-button type="primary" size="small">数据校对</mt-button>
+          </span>
+          </mt-cell>
+
+          <mt-cell title="上次下载时间" label="2018-11-03 10:00:01" >
+          <span style="color: green">
+            <mt-button type="primary" size="small"> 数据下载</mt-button>
           </span>
           </mt-cell>
         </div>
@@ -37,7 +43,7 @@
             <mt-cell title="服药管理"   value="XXX服药管理"></mt-cell>
             <mt-cell title="点名管理"   value="XXX点名管理"></mt-cell>
           </div>
-          <mt-button class="normal-button" size="large" type="primary">提交</mt-button>
+          <mt-button class="normal-button" size="large" type="primary">上传</mt-button>
         </div>
       </div>
     </div>
@@ -70,7 +76,7 @@
         }
         .list{
           text-indent: 30px;
-          height: 750px;
+          height: 650px;
           overflow-y: scroll;
           .mint-cell-value{
             font-size: 13px;/*no*/

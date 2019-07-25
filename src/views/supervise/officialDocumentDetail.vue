@@ -18,6 +18,7 @@
             <p class="main_extra">发文时间：2019-08-31</p>
           </div>
           <mt-button class="normal-button" size="large" type="primary" @click="toPath('/supervise')">转督办</mt-button>
+          <mt-button class="normal-button" size="large" type="primary">文件签批</mt-button>
         </div>
     </div>
   </div>
@@ -58,7 +59,7 @@
         line-height: 20px;/*no*/
         height: 860px;
         .main_title{
-          text-align: center;
+          text-align: left;
         }
         .main_content{
           text-indent: 10px;/*no*/

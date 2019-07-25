@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div id="videopatro">
     <mt-header fixed title="视频巡查">
       <mt-button icon="back" slot="left" @click="$router.back()"></mt-button>
     </mt-header>
     <div class="content">
       <div class="casad-content">
-        <Cascader :data="casad1" placeholder="请选择类型" v-model="value1" @on-change="cascader1change" size="large"></Cascader>
-        <Cascader :data="casad2" placeholder="请选择位置" v-model="value2" @on-change="cascader2change" size="large"></Cascader>
+        <Cascader class="casad-item" :data="casad1" placeholder="请选择类型" v-model="value1" @on-change="cascader1change" size="large"></Cascader>
+        <Cascader class="casad-item" :data="casad2" placeholder="请选择位置" v-model="value2" @on-change="cascader2change" size="large"></Cascader>
       </div>
 
       <div class="scroller-wrapper">
@@ -47,8 +47,8 @@
     name: "message.vue",
     components: {
       "v-menu": Menu,
-      videoPlayer,
-      Cascader
+      "videoPlayer":videoPlayer,
+      "Cascader":Cascader
     },
     data() {
       return {
@@ -260,12 +260,28 @@
 </script>
 
 <style lang="scss">
-  .video-js .vjs-big-play-button{
-    left: 50% !important;
-    top: 50% !important;
-    margin-left: -2em;
-    margin-top: -1.3em;
-    touch-action: none;
+  #videopatro{
+    .content{
+      .casad-content{
+          display: flex;
+          justify-content: center;
+          .casad-item{
+            flex: 1;
+            padding: 10px;
+            margin: 10px auto 0;
+          }
+      }
+
+      .video-js{
+        .vjs-big-play-button{
+          left: 50% !important;
+          top: 50% !important;
+          margin-left: -2em;
+          margin-top: -1.3em;
+          touch-action: none;
+        }
+      }
+    }
   }
 
 </style>

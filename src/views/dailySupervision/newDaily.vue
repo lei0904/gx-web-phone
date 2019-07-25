@@ -20,7 +20,10 @@
             <p class="photo-bg" @click="takePhoto"></p>
           </div>
         </div>
-        <mt-cell title="民警签字" value="已签字"  is-link @click.native="signature"> </mt-cell>
+        <mt-cell title="民警签字" :value="form.isSignature"  is-link @click.native="signature"> </mt-cell>
+        <div class="signature" v-show = 'form.isSignature == "已签字"'>
+          <img :src="form.signatureSrc" alt="">
+        </div>
       </div>
       <mt-button class="normal-button" size="large" type="primary" @click="subForm">提交申请</mt-button>
     </div>
@@ -93,7 +96,9 @@
           typeText:'',
           typeCode:'',
           norm:'',
-          clause:''
+          clause:'',
+          isSignature:'未签字',
+          signatureSrc:''
         },
         actions:[
           {
@@ -235,10 +240,7 @@
             };
             ths.imgList.push(obj);
           }else{
-            ths.$mint.MessageBox.toast({
-              position:'center',
-              message:'拍照失败'
-            })
+            ths.$toast('调用拍照失败')
           }
         })
       },
@@ -251,10 +253,13 @@
         let ths = this;
         ths.$ces.Plugins.SignName.take((rets)=>{
           console.log(rets)
+          let data = rets.data;
+          if(rets.status == 1){
+            ths.form.isSignature ='已签字';
+            ths.form.signatureSrc  ='data:image/jpg;base64,'+data
+          }
         })
       }
-
-
     },
     mounted(){
 
@@ -263,8 +268,6 @@
 </script>
 
 <style lang="scss">
-
-
   .new-daily{
     .mint-actionsheet-list{
       text-align: center;
@@ -316,6 +319,15 @@
             width: 220px;
             height: 220px;
           }
+        }
+      }
+      .signature{
+        width: 400px;
+        height: 200px;
+        margin: 40px auto;
+        img{
+          width: 100%;
+          height: 100%;
         }
       }
     }

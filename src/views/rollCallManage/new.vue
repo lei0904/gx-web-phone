@@ -61,11 +61,20 @@
       mounted(){
         this.actions = [
           {
-            name: '晨起点名',
+            name: '就寝 ',
             method: this.changeType
           },
           {
             name: '半小时点名',
+            method: this.changeType
+          },
+
+          {
+            name: '就寝',
+            method: this.changeType
+          },
+          {
+            name: '区域',
             method: this.changeType
           }
         ];

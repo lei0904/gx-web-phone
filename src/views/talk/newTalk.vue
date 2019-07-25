@@ -39,6 +39,16 @@
       <mt-cell title="录音" >
         <mt-button  size="small" type="primary" @click.native="record">{{isDetail?'播放录音':'开始录音'}}</mt-button>
       </mt-cell>
+      <div class="photo-content">
+        <div class="photo-title">拍照留证</div>
+        <div class="photo">
+          <div class="photo-img" v-for="(item,idx) in imgList" @click="clearImg(idx)">
+            <img :src="item.src" >
+            <p class="clear-img"></p>
+          </div>
+          <p class="photo-bg" @click="takePhoto"></p>
+        </div>
+      </div>
       <mt-button v-if="!isDetail" class="normal-button" size="large" type="primary" @click.native="save">提交</mt-button>
     </div>
   </div>
@@ -50,6 +60,7 @@
     data() {
       return {
         value: true,
+        imgList:[],
         sheetVisible: {
           consigneeVisible: false,
           warehouseVisible: false,
@@ -82,6 +93,27 @@
       };
     },
     methods: {
+
+      takePhoto(){
+        let ths = this;
+        ths.$ces.Plugins.Camera.take(function(rets){
+          console.log('--->rets',rets);
+          if (rets.status === 1) {
+            let data =rets.data;
+            let obj={
+              src:'data:image/jpg;base64,'+data.thumbnail
+            };
+            ths.imgList.push(obj);
+          }else{
+            ths.$toast('调用拍照失败')
+          }
+        })
+      },
+      clearImg(idx){
+        this.$mint.MessageBox.confirm('确认删除此凭证?','系统提示').then(()=>{
+          this.imgList.splice(idx,1)
+        })
+      },
       record(e){
         if(!this.isRecord){
           e.target.innerHTML='结束录音';
@@ -225,6 +257,50 @@
   #new {
     background: #f0f0f4;
     min-height: 100vh;
+
+    .photo-content{
+      border-top: 1px solid #d9d9d9;/*no*/
+      min-height: 320px;
+      margin-left:20px;
+      padding-right: 20px;
+      .photo-title{
+        vertical-align: middle;
+        color: #136dc5;
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;/*no*/
+        font-weight: 400;
+      }
+      .photo{
+        display: flex;
+        .photo-img{
+          position: relative;
+          margin-right: 20px;
+          img{
+            width: 220px;
+            height: 220px;
+            border-radius: 5px;
+          }
+          .clear-img{
+            background: url("../../../static/img/icon-clear.png") no-repeat;
+            background-size: 100% 100%;
+            right: -20px;
+            top:-20px;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            position: absolute;
+          }
+        }
+        .photo-bg{
+          background: url("../../../static/img/photo-bg.png") no-repeat;
+          background-size: 100% 100%;
+          width: 220px;
+          height: 220px;
+        }
+      }
+    }
     .mint-actionsheet-listitem{
       text-align: center;
     }

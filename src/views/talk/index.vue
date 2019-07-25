@@ -63,7 +63,7 @@
           <div class="button">查看详情</div>
         </div>
       </div>
-      <mt-button class="normal-button" size="large" type="primary" @click="newClothing()">添加</mt-button>
+      <mt-button class="normal-button" size="large" type="primary" @click="newClothing()">新建</mt-button>
     </div>
   </div>
 </template>

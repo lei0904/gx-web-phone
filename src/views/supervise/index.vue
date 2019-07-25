@@ -4,6 +4,7 @@
       <router-link to="/governmentIndex" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
+      <mt-button slot="right" @click.native="addressBooks">通讯录</mt-button>
     </mt-header>
     <div class="content">
       <mt-cell title="督办事项" label="项目数量：48" >
@@ -138,6 +139,9 @@
       },
       toPath(val){
         this.$router.push(val)
+      },
+      addressBooks(){
+        this.$router.push({path:'/addressList'})
       }
     },
     mounted(){
@@ -180,11 +184,11 @@
       }
       #charts {
         width: 100%;
-        height: 400px;
+        height: 350px;
         margin-top: 10px; /*no*/
       }
       .rollCallList {
-        height: 500px;
+        height: 350px;
         overflow-y: scroll;
         .item {
           background: #fff;

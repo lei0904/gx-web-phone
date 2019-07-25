@@ -1,11 +1,11 @@
 <template>
-  <div class="new-check">
+  <div class="new-log">
     <mt-header fixed title="新建执勤记录">
       <router-link to="/logExamine" slot="left">
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content">
+    <div class="content"  :style="{height:listH+'px'}">
       <div class="form">
         <mt-cell title="选择事件地点"  :value="form.person" @click.native="openPerson" is-link></mt-cell>
         <mt-cell title="选择事件罪犯" :value="form.typeText" @click.native="openType"  is-link></mt-cell>
@@ -14,7 +14,10 @@
         <mt-cell title="事件时间 "  :value="form.timeValue" @click.native="openTimePicker"  is-link></mt-cell>
         <mt-field label="事件描述"  placeholder="事件描述" type="textarea" rows="4" v-model="form.introduction"></mt-field>
 
-        <mt-cell title="民警签字" value="已签字"  is-link></mt-cell>
+        <mt-cell title="民警签字" :value="form.isSignature"  is-link @click.native="signature"> </mt-cell>
+        <div class="signature" v-show = 'form.isSignature == "已签字"'>
+          <img :src="form.signatureSrc" alt="">
+        </div>
       </div>
       <mt-button class="normal-button" size="large" type="primary" @click="subForm">提交申请</mt-button>
     </div>
@@ -77,6 +80,7 @@
       return {
         sheetVisible:false,
         nowDate: new Date(),
+        listH:0,
         form:{
           timeValue: '',
           introduction:'',
@@ -87,7 +91,9 @@
           typeText:'',
           typeCode:'',
           norm:'',
-          clause:''
+          clause:'',
+          isSignature:'未签字',
+          signatureSrc:''
         },
         actions:[
           {
@@ -193,19 +199,33 @@
       },
       clauseChange(v){
         this.form.clause = v.value;
+      },
+      signature(){
+        let ths = this;
+        ths.$ces.Plugins.SignName.take((rets)=>{
+          console.log(rets)
+          let data = rets.data;
+          if(rets.status == 1){
+            ths.form.isSignature ='已签字';
+            ths.form.signatureSrc  ='data:image/jpg;base64,'+data
+          }
+        })
       }
 
 
     },
     mounted(){
 
+      this.listH = document.body.clientHeight  -45 ;
     }
   }
 </script>
 
 <style lang="scss">
 
-  .new-check{
+  .new-log{
+    .content{
+      overflow: scroll;
     .mint-actionsheet-list{
       text-align: center;
     }
@@ -214,6 +234,17 @@
       margin-left: 5%;
       margin-top: 35px;
     }
+    .signature{
+      width: 400px;
+      height: 200px;
+      margin: 40px auto;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    }
   }
+
 
 </style>

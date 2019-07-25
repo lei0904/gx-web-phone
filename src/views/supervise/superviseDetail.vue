@@ -5,7 +5,7 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content">
+    <div class="content" :style="{height:listH+'px'}">
       <mt-cell title="督办标题" value="市直单位财务违规问题整改落实督办"></mt-cell>
       <mt-cell title="任务类型" value="重点工作"></mt-cell>
       <mt-cell title="任务来源">
@@ -25,7 +25,9 @@
       <mt-cell title="选择任务状态" is-link @click.native="sheetVisible = true"
                :value="status"></mt-cell>
       <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
-      <mt-button class="normal-button" size="large" type="primary" >提交处理</mt-button>
+      <mt-button class="normal-button" size="large" type="primary"  @click.native="sub">回复</mt-button>
+      <mt-button class="normal-button" size="large" type="primary">督办发协同</mt-button>
+
     </div>
   </div>
 </template>
@@ -36,7 +38,8 @@
       return {
         sheetVisible:false,
         actions:[],
-        status:''
+        status:'',
+        listH:0
       };
     },
     methods: {
@@ -45,6 +48,12 @@
       },
       changeStatus(val){
           this.status = val.name
+      },
+      sub(){
+        let ths = this;
+        ths.$mint.MessageBox.confirm("确认回复督办?",'提示').then(()=>{
+          ths.$router.push({'path':'/supervise'})
+        })
       }
     },
     mounted(){
@@ -62,6 +71,7 @@
           method: this.changeStatus
         }
       ]
+      this.listH = document.body.clientHeight - 45;
     }
 
   }
@@ -75,6 +85,7 @@
     }
     .content {
       position: relative;
+      overflow: scroll;
       .text{
         padding:0 10px 10px;/*no*/
         font-size: 14px;/*no*/

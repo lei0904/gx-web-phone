@@ -2,13 +2,13 @@
   <div id="exams">
     <div class="page-part">
       <mt-header fixed title="在线考试">
-        <mt-button icon="back" slot="left" @click="$router.replace('/myapp')"></mt-button>
+        <mt-button icon="back" slot="left" @click="$router.replace('/governmentIndex')"></mt-button>
       </mt-header>
     </div>
     <div class="content">
         <div class="scroller-wrapper" :style="{height:listH+'px'}">
             <div class="exam-content">
-              <mt-swipe class="question" :auto="0" :show-indicators="false" :continuous="false">
+              <mt-swipe class="question" :auto="0" :show-indicators="false" :continuous="false" :defaultIndex= 'defaultIndex'>
                 <mt-swipe-item class="exam-item" :key="idx" v-for="(item,idx) in list" :style="{height:listH+'px'}">
                   <div>{{idx+1}}、{{item.question}}</div>
                   <div  v-for="itemAnswer in item.choice" class="item-answer">
@@ -20,6 +20,9 @@
                   <div class="sub-btn" v-if="len == (idx+1)" :target="idx">
                     <mt-button class="normal-button" size="large" type="primary" @click.native="sub">确定</mt-button>
                   </div>
+                    <div class="sub-btn" v-else>
+                      <mt-button class="normal-button" size="large" type="primary">下一题</mt-button>
+                    </div>
                 </mt-swipe-item>
               </mt-swipe>
         </div>
@@ -45,6 +48,7 @@
         listH:0,
         value:'',
         len:0,
+        defaultIndex:0,
         scrollerPosition: null
       }
     },
@@ -61,7 +65,7 @@
         this.len = this.list.length;
         console.log('--->',this.len)
       })
-      this.listH = document.body.clientHeight - 120;
+      this.listH = document.body.clientHeight - 320;
     },
     methods: {
       sub(){
@@ -69,6 +73,8 @@
         ths.$mint.MessageBox.confirm('确定完成考试?','提示').then(()=>{
           ths.$router.push({path:'/governmentIndex'});
         })
+      },
+      next(){
       }
     }
   }
@@ -82,7 +88,7 @@
         font-size: 14px;/*no*/
         .exam-content{
           height: 100%;
-          padding: 20px 40px;
+          padding: 90px 40px;
           position: relative;
           .exam-item{
             height: 100%;
@@ -96,7 +102,7 @@
           }
           .sub-btn{
             position: absolute;
-            bottom: 0;
+            bottom: 70px;
             width: 100%;
           }
         }

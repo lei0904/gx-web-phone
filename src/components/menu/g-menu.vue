@@ -4,7 +4,7 @@
       <i class="menu_1"></i>
       <p>资讯</p>
     </div>
-    <div class="menu_item" :class="checked ==2 ? 'checked' : ''" @click="toPath('/bussiness')">
+    <div class="menu_item" :class="checked ==2 ? 'checked' : ''" @click="toPath('/forum')">
       <i class="menu_2"></i>
       <p>互动</p>
     </div>
@@ -12,7 +12,7 @@
       <i class="menu_3"></i>
       <p>督查督办</p>
     </div>
-    <div class="menu_item" :class="checked ==4 ? 'checked' : ''" @click="toPath('/personal')">
+    <div class="menu_item" :class="checked ==4 ? 'checked' : ''" @click="toPath('/center')">
       <i class="menu_4"></i>
       <p>个人</p>
     </div>

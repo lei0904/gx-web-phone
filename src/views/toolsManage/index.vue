@@ -15,14 +15,14 @@
           <div class="toggle" @click="toPath('/outofWarehouse')">
             <input type="checkbox">
             <span class="button"></span>
-            <span class="label">出库</span>
+            <span class="label">工具发放</span>
           </div>
         </div>
         <div class="box">
           <div class="toggle" @click="toPath('/inWarehouse')">
             <input type="checkbox">
             <span class="button"></span>
-            <span class="label">入库</span>
+            <span class="label">工具回收</span>
           </div>
         </div>
       </div>
@@ -157,7 +157,6 @@
           text-align: center;
           position: absolute;
           font-weight: 700;
-          font-size: 18px;/*no*/
           display: block;
           opacity: 0.9;
           height: 100%;
@@ -178,7 +177,6 @@
           box-shadow: 0 15px 25px -4px rgba(0, 0, 0, 0.4), inset 0 -8px 30px 1px rgba(255, 255, 255, 0.9), 0 -10px 15px -1px rgba(255, 255, 255, 0.6), inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
         }
         .toggle input:active ~ .label {
-          font-size: 18px;/*no*/
           color: rgba(0, 0, 0, 0.45);
         }
         .toggle input:checked ~ .button {

@@ -64,18 +64,21 @@ const LogExamine = r => require.ensure([], () => r(require('@/views/dailySupervi
 const NewLog = r => require.ensure([], () => r(require('@/views/dailySupervision/newLog')), 'NewLog')
 const DailyExamine = r => require.ensure([], () => r(require('@/views/dailySupervision/DailyExamine')), 'DailyExamine')
 const NewDaily = r => require.ensure([], () => r(require('@/views/dailySupervision/newDaily')), 'NewDaily')
+const Chat = r => require.ensure([], () => r(require('@/views/message/chat')), 'Chat');
 
 
 const myapp = r => require.ensure([], () => r(require('@/views/appcenter/index')), 'myapp') //我的应用
 const appcenter = r => require.ensure([], () => r(require('@/views/appcenter/appcenter')), 'appcenter') //应用中心
 
+const center = r => require.ensure([], () => r(require('@/views/center/center')), 'center') //政务个人中心
 
 
 
 /*移动政务*/
 const GovernmentIndex = r => require.ensure([], () => r(require('@/views/government/index')), 'GovernmentIndex'); //应用中心
 const exams = r => require.ensure([], () => r(require('@/views/governmentExams/index')), 'exams'); //考试
-
+const forum =r => require.ensure([], () => r(require('@/views/forum/forum')), 'forum'); //论坛
+const addressList =r => require.ensure([], () => r(require('@/views/supervise/addressList')), 'addressList'); //论坛
 
 /*shenjie*/
 const partyFee = r => require.ensure([], () => r(require('@/views/partyFee/index')), 'partyFee') //党建收费
@@ -89,10 +92,21 @@ const threeOne = r => require.ensure([], () => r(require('@/views/threeOne/index
 const specialSubject = r => require.ensure([], () => r(require('@/views/specialSubject/index')), 'specialSubject') //专题教育
 const combatCorruption = r => require.ensure([], () => r(require('@/views/combatCorruption/index')), 'combatCorruption') //反腐倡廉
 
+const login = r => require.ensure([], () => r(require('@/views/login/login')), 'login') //登录
+const basic = r => require.ensure([], () => r(require('@/views/center/basic')), 'basic') //
+
 var routes = [
   {
     path: '',
-    redirect: '/myapp'
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login,
+    meta:{
+      value:0
+    }
   },
   {
     path: '/workbench',
@@ -161,7 +175,7 @@ var routes = [
     name: 'newTalk',
     component: newTalk,
     meta:{
-      value:2
+      value:3
     }
   },
   {
@@ -581,6 +595,50 @@ var routes = [
       value:5
     }
   },
+  {
+    path: '/forum',
+    name: 'forum',
+    component: forum,
+    meta:{
+      value:3
+    }
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat,
+    meta:{
+      value:3
+    }
+  },
+
+  {
+    path: '/addressList',
+    name: 'addressList',
+    component: addressList,
+    meta:{
+      value:4
+    }
+  },
+  {
+    path: '/center',
+    name: 'center',
+    component: center,
+    meta:{
+      value:3
+    }
+  },
+  {
+    path: '/basic',
+    name: 'basic',
+    component: basic,
+    meta:{
+      value:4
+    }
+  },
+
+
+
 ];
 
 Vue.use(Router);

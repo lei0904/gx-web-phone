@@ -13,7 +13,11 @@
           <mt-cell title="警情地点" value="五监区宿舍楼"></mt-cell>
           <mt-cell title="上报民警" value="王一"></mt-cell>
           <mt-cell title="上报时间" value="2019-7-19"></mt-cell>
-          <div class="button" @click="toPath('/emergencyFollowUp')">查看详情</div>
+          <div class="button" @click="receive">{{isReceive}}</div>
+        </div>
+        <div class="btn-content">
+          <mt-button type="primary" class="normal-button"  @click.native="toPath('/emergencynew')">处置</mt-button>
+          <mt-button type="primary" class="normal-button"  @click.native="toPath('/emergencyFollowUp')">回查</mt-button>
         </div>
       </div>
     </div>
@@ -24,12 +28,16 @@
   export default {
     data() {
       return {
-        keyword:''
+        keyword:'',
+        isReceive:'接收'
       };
     },
     methods: {
       toPath(val){
         this.$router.push(val)
+      },
+      receive(){
+        this.isReceive ='已接受'
       }
     },
     mounted(){

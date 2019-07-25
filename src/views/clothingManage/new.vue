@@ -38,10 +38,13 @@
         </div>
       </mt-popup>
 
-      <mt-cell title="罪犯指纹识别">
-        <mt-button v-show="!fingerprintConfirm.fingerprint2" size="small" type="primary" @click.native="popupVisible.popupVisible2 = true">开始识别</mt-button>
-        <div v-show="fingerprintConfirm.fingerprint2">已确认指纹</div>
+      <mt-cell title="罪犯签字" is-link @click.native="signature" :value="isSignature">
+        <!--<mt-button v-show="!fingerprintConfirm.fingerprint2" size="small" type="primary" @click.native="popupVisible.popupVisible2 = true">开始识别</mt-button>
+        <div v-show="fingerprintConfirm.fingerprint2">已确认指纹</div>-->
       </mt-cell>
+      <div class="signature" v-show = 'isSignature == "已签字"'>
+        <img :src="signatureSrc" alt="">
+      </div>
       <mt-popup v-model="popupVisible.popupVisible2" popup-transition="popup-fade" class="mint-popup" >
         <div class="fingerprint" @click="getFingerprint('fingerprint2','popupVisible2')">
           <img src="../../../static/img/icon_fingerprint.png">
@@ -60,6 +63,8 @@
     data() {
       return {
         value: true,
+        signatureSrc:'',
+        isSignature:'未签字',
         sheetVisible: {
           consigneeVisible: false,
           warehouseVisible: false,
@@ -89,6 +94,17 @@
       };
     },
     methods: {
+      signature(){
+        let ths = this;
+        ths.$ces.Plugins.SignName.take((rets)=>{
+          console.log(rets)
+          let data = rets.data;
+          if(rets.status == 1){
+            ths.isSignature ='已签字';
+            ths.signatureSrc  ='data:image/jpg;base64,'+data
+          }
+        })
+      },
       changeConsignee(val){
         this.newData.consignee = val.name
       },

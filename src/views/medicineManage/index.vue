@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <mt-button class="normal-button" size="large" type="primary" @click="toPath('/medicinemanagenew')">新建</mt-button>
+      <mt-button class="normal-button" size="large" type="primary" @click="toPath('/medicinemanagenew')">新增</mt-button>
 
     </div>
   </div>

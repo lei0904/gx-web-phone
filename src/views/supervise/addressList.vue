@@ -1,0 +1,191 @@
+<template>
+  <div id="addressList">
+    <mt-header fixed title="通讯录">
+      <router-link to="/superviseIndex" slot="left">
+        <mt-button icon="back"></mt-button>
+      </router-link>
+      <mt-button slot="right"  @click.native="addressBooks">通讯录</mt-button>
+    </mt-header>
+    <mt-index-list>
+      <mt-index-section :index="item.index" :key="item.index" v-for="item in list">
+        <mt-cell :title="items" :key="items" v-for="items in item.nameList"></mt-cell>
+      </mt-index-section>
+    </mt-index-list>
+  </div>
+</template>
+<style>
+
+</style>
+<script>
+  export default {
+    data(){
+      return {
+        list:[
+          {
+            index:'A',
+            nameList:[
+              '爱新觉罗.努尔哈赤',
+              '爱新觉罗.皇太极',
+              '爱新觉罗.福临',
+              '爱新觉罗.玄烨'
+            ]
+          },
+          {
+            index:'B',
+            nameList:[
+              '鲍春阳'
+            ]
+          },
+          {
+            index:'C',
+            nameList:[
+              '陈小纭'
+            ]
+          },
+          {
+            index:'D',
+            nameList:[
+              '迪丽热巴'
+            ]
+          },
+          {
+            index:'E',
+            nameList:[
+              '易中天'
+            ]
+          },
+          {
+            index:'F',
+            nameList:['方世玉']
+          },
+          {
+            index:'G',
+            nameList:[
+              '高阳公主'
+            ]
+          },
+          {
+            index:'H',
+            nameList:[
+              '黄晓明'
+            ]
+          },
+          {
+            index:'I',
+            nameList:[
+              'iiiiii'
+            ]
+          },
+          {
+            index:'J',
+            nameList:[
+              'jay'
+            ]
+          },
+          {
+            index:'K',
+            nameList:[]
+          },
+          {
+            index:'L',
+            nameList:[
+              '李世民'
+            ]
+          },
+          {
+            index:'M',
+            nameList:[
+              '马超',
+              '马化腾'
+            ]
+          },
+          {
+            index:'N',
+            nameList:[
+              '年羹尧'
+            ]
+          },
+
+          {
+            index:'O',
+            nameList:[
+              '欧市民'
+            ]
+          },
+
+          {
+            index:'P',
+            nameList:[
+              '潘伟',
+              '庞统'
+            ]
+          },
+          {
+            index:'Q',
+            nameList:[
+              '钱八'
+            ]
+          },
+          {
+            index:'R',
+            nameList:[
+              '任达华'
+            ]
+          },
+          {
+            index:'S',
+            nameList:[
+              '司马懿'
+            ]
+          },
+          {
+            index:'T',
+            nameList:[
+              '腾讯'
+            ]
+          },
+          {
+            index:'U',
+            nameList:[
+              '尤三姐'
+            ]
+          },
+          {
+            index:'V',
+            nameList:[
+              'VV'
+            ]
+          },
+          {
+            index:'W',
+            nameList:[
+              '王阳明'
+            ]
+          },
+          {
+            index:'X',
+            nameList:[
+              '谢霆锋'
+            ]
+          },
+          {
+            index:'Y',
+            nameList:['尤米']
+          },
+          {
+            index:'Z',
+            nameList:[
+              '赵忠祥'
+            ]
+          },
+        ]
+      }
+    },
+    methods:{
+
+    },
+    mounted(){
+
+    }
+  }
+</script>

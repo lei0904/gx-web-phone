@@ -5,7 +5,7 @@
         <mt-button icon="back"></mt-button>
       </router-link>
     </mt-header>
-    <div class="content">
+    <div class="content" :style="{height:listH+'px'}">
       <div class="form">
         <mt-cell title="选择考核人"  :value="form.person" @click.native="openPerson" is-link></mt-cell>
         <mt-cell title="选择考核分类" :value="form.typeText" @click.native="openType"  is-link></mt-cell>
@@ -16,7 +16,10 @@
 
         <mt-field label="加扣" placeholder="请输入加扣分值" type="number" v-model="form.add"></mt-field>
         <mt-field label="分值" placeholder="请输入分值" type="number" v-model="form.score"></mt-field>
-        <mt-cell title="民警签字" value="已签字"  is-link></mt-cell>
+        <mt-cell title="民警签字" :value="form.isSignature"  is-link @click.native="signature"> </mt-cell>
+        <div class="signature" v-show = 'form.isSignature == "已签字"'>
+          <img :src="form.signatureSrc" alt="">
+        </div>
       </div>
       <mt-button class="normal-button" size="large" type="primary" @click="subForm">提交申请</mt-button>
     </div>
@@ -79,6 +82,7 @@
           return {
             sheetVisible:false,
             nowDate: new Date(),
+            listH:0,
             form:{
               timeValue: '',
               introduction:'',
@@ -89,7 +93,9 @@
               typeText:'',
               typeCode:'',
               norm:'',
-              clause:''
+              clause:'',
+              isSignature:'未签字',
+              signatureSrc:''
             },
             actions:[
               {
@@ -213,12 +219,23 @@
         },
         clauseChange(v){
           this.form.clause = v.value;
+        },
+        signature(){
+          let ths = this;
+          ths.$ces.Plugins.SignName.take((rets)=>{
+            console.log(rets)
+            let data = rets.data;
+            if(rets.status == 1){
+              ths.form.isSignature ='已签字';
+              ths.form.signatureSrc  ='data:image/jpg;base64,'+data
+            }
+          })
         }
 
 
       },
       mounted(){
-
+          this.listH = document.body.clientHeight  -45 ;
       }
     }
 </script>
@@ -226,13 +243,26 @@
 <style lang="scss">
 
   .new-check{
-    .mint-actionsheet-list{
-      text-align: center;
-    }
-    .normal-button {
-      width: 90%;
-      margin-left: 5%;
-      margin-top: 35px;
+    .content{
+        overflow: scroll;
+      .mint-actionsheet-list{
+        text-align: center;
+      }
+      .normal-button {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 35px;
+      }
+
+      .signature{
+        width: 400px;
+        height: 200px;
+        margin: 40px auto;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 
